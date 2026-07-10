@@ -1,0 +1,64 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowRight, Users } from "lucide-react";
+import { PageHero } from "@/components/shared/PageHero";
+import { Container } from "@/components/ui/Container";
+import { GlassCard } from "@/components/ui/GlassCard";
+import { gameCategories } from "@/lib/games";
+
+export const metadata: Metadata = {
+  title: "Games",
+  description:
+    "Browse Daman Game's skill-based game categories — Arcade, Strategy, Racing, and Puzzle — and jump into ranked matches today.",
+};
+
+export default function GamesPage() {
+  return (
+    <>
+      <PageHero
+        eyebrow="Game Library"
+        title="Four arenas. One competitive edge."
+        description="Every category is built around fair matchmaking and genuine skill progression — pick your arena and start climbing."
+      />
+
+      <section className="py-16 sm:py-20">
+        <Container>
+          <div className="grid gap-6 sm:grid-cols-2">
+            {gameCategories.map((category) => (
+              <Link key={category.slug} href={`/games/${category.slug}`}>
+                <GlassCard as="article" className="h-full">
+                  <div className="flex items-start justify-between">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-brand-red/20 to-brand-orange/20">
+                      <category.icon
+                        size={22}
+                        className="text-brand-gold"
+                        aria-hidden
+                      />
+                    </div>
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-muted">
+                      <Users size={12} aria-hidden />
+                      {category.players}
+                    </span>
+                  </div>
+                  <h2 className="mt-5 font-display text-2xl font-bold text-white">
+                    {category.name}
+                  </h2>
+                  <p className="mt-1 text-sm font-semibold text-brand-gold">
+                    {category.tagline}
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-muted">
+                    {category.description}
+                  </p>
+                  <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-white">
+                    Explore {category.name}
+                    <ArrowRight size={16} aria-hidden />
+                  </span>
+                </GlassCard>
+              </Link>
+            ))}
+          </div>
+        </Container>
+      </section>
+    </>
+  );
+}
