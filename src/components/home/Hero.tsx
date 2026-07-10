@@ -80,19 +80,13 @@ export function Hero() {
             Daman Game — India&rsquo;s Premium Skill-Gaming Arena
           </motion.span>
 
-          <motion.h1
-            initial="hidden"
-            animate="visible"
-            custom={1}
-            variants={fadeUp}
-            className="mt-6 font-display text-5xl font-extrabold uppercase leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl"
-          >
+          <h1 className="mt-6 font-display text-5xl font-extrabold uppercase leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
             <span className="text-white">Play</span>{" "}
             <span className="text-gradient-fire">Fearless</span>
             <br />
             <span className="text-white">Rise</span>{" "}
             <span className="text-gradient-fire">Legendary</span>
-          </motion.h1>
+          </h1>
 
           <motion.p
             initial="hidden"

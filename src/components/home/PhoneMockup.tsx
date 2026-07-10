@@ -34,7 +34,7 @@ const tabs = [
 
 export function PhoneMockup() {
   return (
-    <div className="relative mx-auto w-[280px] sm:w-[300px]">
+    <div aria-hidden className="relative mx-auto w-[280px] sm:w-[300px]">
       {/* device frame */}
       <div className="relative rounded-[2.75rem] border border-white/10 bg-gradient-to-b from-[#1a1a1a] to-[#0a0a0a] p-2.5 shadow-[0_40px_120px_-30px_rgba(255,59,48,0.55)]">
         <div className="absolute left-1/2 top-2.5 z-10 h-5 w-24 -translate-x-1/2 rounded-full bg-black" />
@@ -128,7 +128,7 @@ export function PhoneMockup() {
                 </div>
                 <span
                   className={`text-[7px] font-medium ${
-                    active ? "text-brand-gold" : "text-white/40"
+                    active ? "text-brand-gold" : "text-white/70"
                   }`}
                 >
                   {label}
