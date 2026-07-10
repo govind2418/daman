@@ -27,6 +27,7 @@ export const footerLinks = {
     { label: "Tournaments", href: "/tournaments" },
     { label: "Leaderboard", href: "/leaderboard" },
     { label: "Rewards", href: "/rewards" },
+    { label: "Daman Login", href: "/login" },
   ],
   company: [
     { label: "About", href: "/about" },

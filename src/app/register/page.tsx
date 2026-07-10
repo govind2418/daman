@@ -4,14 +4,15 @@ import { RegisterForm } from "@/components/forms/RegisterForm";
 
 export const metadata: Metadata = {
   title: "Register",
-  description: "Create your free Daman Game account and start competing.",
+  description:
+    "Create your free Daman Game account in under a minute — already registered? Head to Daman Login instead.",
 };
 
 export default function RegisterPage() {
   return (
     <AuthLayout
-      title="Join the arena"
-      description="Create your free account in under a minute and jump into your first ranked match today."
+      title="Join Daman Game"
+      description="Create your free Daman Game account in under a minute and jump into your first ranked match today."
     >
       <RegisterForm />
     </AuthLayout>

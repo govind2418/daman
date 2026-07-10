@@ -3,15 +3,16 @@ import { AuthLayout } from "@/components/shared/AuthLayout";
 import { LoginForm } from "@/components/forms/LoginForm";
 
 export const metadata: Metadata = {
-  title: "Log In",
-  description: "Log in to your Daman Game account.",
+  title: "Daman Login",
+  description:
+    "Daman Login — sign in to your Daman Game account to compete, climb the leaderboard, and unlock rewards on damangame.co.in.",
 };
 
 export default function LoginPage() {
   return (
     <AuthLayout
-      title="Get back in the arena"
-      description="Pick up your rank, tournaments, and rewards right where you left off."
+      title="Daman Login"
+      description="Daman Login to pick up your rank, tournaments, and rewards right where you left off on Daman Game."
     >
       <LoginForm />
     </AuthLayout>

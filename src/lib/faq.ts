@@ -2,6 +2,16 @@ import type { AccordionItem } from "@/components/ui/Accordion";
 
 export const faqs: AccordionItem[] = [
   {
+    question: "What is Daman Game (damangame)?",
+    answer:
+      "Daman Game — also searched as damangame — is India's premium skill-based gaming platform at damangame.co.in. Players compete in ranked matches and tournaments across arcade, strategy, racing, and puzzle titles to earn ranks and rewards.",
+  },
+  {
+    question: "How do I do Daman Login?",
+    answer:
+      "Go to the Daman Login page, enter your registered email and password, and select Log In. If you've forgotten your password, use the 'Forgot password?' link on the Daman Login screen to reset it.",
+  },
+  {
     question: "Is Daman Game a real-money gambling platform?",
     answer:
       "No. Daman Game is a skill-based competitive gaming platform. Players compete in matches and tournaments to earn ranks, badges, and in-platform rewards — there is no real-money wagering involved.",

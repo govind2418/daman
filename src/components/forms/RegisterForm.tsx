@@ -92,9 +92,9 @@ export function RegisterForm() {
       </form>
 
       <p className="mt-6 text-center text-sm text-muted">
-        Already have an account?{" "}
+        Already have a Daman Game account?{" "}
         <Link href="/login" className="font-semibold text-brand-gold hover:underline">
-          Log in
+          Daman Login
         </Link>
       </p>
     </>

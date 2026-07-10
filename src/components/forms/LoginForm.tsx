@@ -15,10 +15,10 @@ export function LoginForm() {
   return (
     <>
       <h2 className="text-center font-display text-2xl font-bold text-white lg:text-left">
-        Welcome back
+        Daman Login
       </h2>
       <p className="mt-2 text-center text-sm text-muted lg:text-left">
-        Log in to continue climbing the ranks.
+        Daman Login to continue climbing the ranks on Daman Game.
       </p>
 
       <form onSubmit={handleSubmit} className="mt-7 space-y-5">

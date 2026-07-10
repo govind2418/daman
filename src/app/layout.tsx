@@ -29,6 +29,12 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   keywords: [
+    "Daman Game",
+    "Daman Login",
+    "damangame",
+    "damangame.co.in",
+    "Daman Game login",
+    "Daman Game register",
     "skill gaming",
     "esports tournaments",
     "gaming leaderboard",
@@ -95,8 +101,22 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               name: siteConfig.fullName,
+              alternateName: ["Daman Game", "damangame", "Daman"],
               url: siteConfig.url,
+              logo: `${siteConfig.url}/favicon.ico`,
               description: siteConfig.description,
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: siteConfig.fullName,
+              alternateName: ["Daman Game", "damangame"],
+              url: siteConfig.url,
             }),
           }}
         />

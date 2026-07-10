@@ -77,7 +77,7 @@ export function Hero() {
             variants={fadeUp}
             className="inline-flex items-center gap-2 rounded-full border border-brand-orange/30 bg-brand-orange/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-brand-gold"
           >
-            India&rsquo;s Premium Skill-Gaming Arena
+            Daman Game — India&rsquo;s Premium Skill-Gaming Arena
           </motion.span>
 
           <motion.h1
@@ -101,8 +101,9 @@ export function Hero() {
             variants={fadeUp}
             className="mx-auto mt-6 max-w-md text-base leading-relaxed text-muted sm:text-lg lg:mx-0"
           >
-            Compete in premium tournaments, climb the global leaderboard, and
-            unlock rewards built for serious players.
+            Join Daman Game to compete in premium tournaments, climb the
+            global leaderboard, and unlock rewards built for serious
+            players.
           </motion.p>
 
           <motion.div

@@ -7,7 +7,7 @@ import { faqs } from "@/lib/faq";
 export const metadata: Metadata = {
   title: "FAQ",
   description:
-    "Answers to common questions about Daman Game — accounts, matchmaking, tournaments, and rewards.",
+    "Answers to common questions about Daman Game (damangame) — Daman Login, accounts, matchmaking, tournaments, and rewards.",
 };
 
 export default function FaqPage() {
@@ -24,6 +24,24 @@ export default function FaqPage() {
           <Accordion items={faqs} />
         </Container>
       </section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqs.map((faq) => ({
+              "@type": "Question",
+              name: faq.question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: faq.answer,
+              },
+            })),
+          }),
+        }}
+      />
     </>
   );
 }
