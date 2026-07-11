@@ -103,7 +103,7 @@ export default function RootLayout({
               name: siteConfig.fullName,
               alternateName: ["Daman Game", "damangame", "Daman"],
               url: siteConfig.url,
-              logo: `${siteConfig.url}/favicon.ico`,
+              logo: `${siteConfig.url}/icon.svg`,
               description: siteConfig.description,
             }),
           }}

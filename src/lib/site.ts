@@ -34,6 +34,7 @@ export const footerLinks = {
     { label: "Careers", href: "/careers" },
     { label: "Press", href: "/press" },
     { label: "Blog", href: "/blog" },
+    { label: "Sister Companies", href: "/sister-companies" },
   ],
   support: [
     { label: "Help Center", href: "/support" },
