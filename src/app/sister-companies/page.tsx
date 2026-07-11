@@ -17,6 +17,18 @@ const sisterCompanies = [
     description:
       "6club is a sister platform in the Daman Game family, offering its own lineup of skill-based games, tournaments, and rewards for competitive players.",
   },
+  {
+    name: "Sikkim Game",
+    url: "https://sikkimgame.co.in",
+    description:
+      "Sikkim Game is a sister platform in the Daman Game family, offering its own lineup of skill-based games, tournaments, and rewards for competitive players.",
+  },
+  {
+    name: "Lottery 7",
+    url: "https://7lottery.in.net",
+    description:
+      "Lottery 7 is a sister platform in the Daman Game family, offering its own lineup of skill-based games, tournaments, and rewards for competitive players.",
+  },
 ];
 
 export default function SisterCompaniesPage() {
