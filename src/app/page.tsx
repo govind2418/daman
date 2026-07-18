@@ -49,6 +49,7 @@ const gettingStarted = [
     title: "Access",
     description:
       "Daman Game is accessed through a web browser at damangame.co.in. No installation is required to create an account or play.",
+    href: "/download",
   },
 ];
 
@@ -120,9 +121,18 @@ export default function Home() {
         <Container>
           <SectionHeading eyebrow="Getting Started" title="Log in, register, or access the platform" />
           <div className="mt-12 grid gap-6 sm:grid-cols-3">
-            {gettingStarted.map(({ icon, title, description }) => (
-              <IconCard key={title} icon={icon} title={title} description={description} headingLevel="h3" />
-            ))}
+            {gettingStarted.map(({ icon, title, description, href }) => {
+              const card = (
+                <IconCard icon={icon} title={title} description={description} headingLevel="h3" />
+              );
+              return href ? (
+                <Link key={title} href={href}>
+                  {card}
+                </Link>
+              ) : (
+                <div key={title}>{card}</div>
+              );
+            })}
           </div>
         </Container>
       </section>
@@ -185,6 +195,7 @@ export default function Home() {
           { label: "Rewards", href: "/rewards", description: "View reward tiers and perks." },
           { label: "About", href: "/about", description: "Information about Daman Game." },
           { label: "Support", href: "/support", description: "Help center and account topics." },
+          { label: "Download", href: "/download", description: "How to access Daman Game." },
         ]}
       />
 

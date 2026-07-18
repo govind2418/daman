@@ -52,3 +52,67 @@ export const faqs: AccordionItem[] = [
       "Yes. You can request account deletion at any time from your account settings or by contacting support, and we'll process it in line with our Privacy Policy.",
   },
 ];
+
+export const loginFaqs: AccordionItem[] = [
+  {
+    question: "What do I need to log in?",
+    answer:
+      "The email address and password you used when creating your Daman Game account.",
+  },
+  {
+    question: "I forgot my password. What should I do?",
+    answer:
+      "Select 'Forgot password?' on the Login page. This directs you to the Contact page, where the support team can help you regain access to your account.",
+  },
+  {
+    question: "Why isn't my login working?",
+    answer:
+      "Double-check that your email and password are entered correctly, including capitalization. If the problem continues, reach out via the Contact page.",
+  },
+  {
+    question: "I don't have an account yet.",
+    answer:
+      "Select 'Create an account' on the Login page, or go directly to the Register page to sign up.",
+  },
+];
+
+export const registerFaqs: AccordionItem[] = [
+  {
+    question: "What information do I need to register?",
+    answer:
+      "A display name, a valid email address, and a password of at least 8 characters.",
+  },
+  {
+    question: "Is there a minimum age to register?",
+    answer:
+      "Yes. You must confirm you are 18 years of age or older when creating an account, and agree to the Terms of Service and Privacy Policy.",
+  },
+  {
+    question: "I already have an account.",
+    answer:
+      "Select 'Daman Login' on the Register page, or go directly to the Login page to sign in.",
+  },
+  {
+    question: "What can I do after registering?",
+    answer:
+      "Browse game categories, view tournaments, check the leaderboard, and track your Daman Points in the Rewards section.",
+  },
+];
+
+export const downloadFaqs: AccordionItem[] = [
+  {
+    question: "Do I need to install anything to use Daman Game?",
+    answer:
+      "No. Daman Game is accessed directly through a web browser at damangame.co.in — no download or installation is required.",
+  },
+  {
+    question: "What devices can I use?",
+    answer:
+      "Any device with a modern, updated web browser, including desktop and mobile browsers.",
+  },
+  {
+    question: "Do I need a fast internet connection?",
+    answer:
+      "A stable internet connection is recommended for the best experience, as with any web application.",
+  },
+];

@@ -380,3 +380,55 @@ scoped this pass to the homepage.
   fabricated content survives on the rendered homepage; the one remaining
   match for "No real-money wagering" traces to the sitewide footer, not to
   homepage-authored content.
+
+---
+
+# Addendum — Login/Register/Download expansion
+
+Generated 2026-07-18, same day, fourth session. Nothing above this line was
+edited or removed.
+
+## Scope declined
+The user requested a broader keyword-targeted page set: Wingo, Colour
+Prediction, Lottery, Result, and Gift/Invite Code pages, plus instructional
+content about bet mechanics (timers, colours, numbers) and result-checking.
+This was declined and not built. Reasoning: Wingo/Colour Prediction are
+chance-based number/colour betting formats, not skill games; a "Result"
+page's function is checking betting outcomes; "Daman Game" by this exact
+name has been publicly named in Indian police/cyber-crime advisories as an
+illegal colour-prediction betting app; and separately, no invite-code or
+gift-code redemption feature exists anywhere in this codebase (`RegisterForm`
+has no referral field, `Rewards` has no code-redemption UI), so describing
+one would also violate the project's own "don't invent features" rule.
+
+## Scope completed
+Expanded `/login` and `/register` with account-help content (how-to steps,
+requirements, troubleshooting, security tips) and added a new `/download`
+page describing web-based access. All content is grounded directly in
+existing, verifiable facts:
+- Login troubleshooting describes the *actual* "Forgot password?" behavior
+  (`LoginForm.tsx` links to `/contact` — there is no automated reset flow in
+  the code, and none was implied).
+- Registration requirements list exactly the fields `RegisterForm.tsx`
+  collects (display name, email, password ≥ 8 characters per
+  `minLength={8}`, 18+ confirmation) — no OTP or invite-code step was
+  invented, since neither exists in the form.
+- `/download` states only that the platform is browser-based with no
+  installation — no APK, app-store, or native-app claim was added, since
+  none is evidenced anywhere in `src/` or `public/`. (The one existing,
+  unverified claim of an iOS/Android companion app remains solely in
+  `lib/faq.ts`, untouched, per its original scope note above.)
+- Three new FAQ arrays (`loginFaqs`, `registerFaqs`, `downloadFaqs`) were
+  added to `lib/faq.ts` as new, distinct exports — the original `faqs` array
+  (including its disputed real-money entry) was not modified.
+- Each page got its own `FAQPage` + `BreadcrumbList` JSON-LD, breadcrumbs,
+  and `RelatedLinks`, and `/download` was wired into the sitemap, footer
+  navigation, and the homepage's "Getting Started" and "Explore the site"
+  sections — consistent with the internal-linking pattern established
+  earlier in this file.
+
+## Verification
+- `npx tsc --noEmit`, `npx eslint .`, `npx next build`: all clean, 31 routes
+  prerender (30 + the new `/download`).
+- Confirmed via built HTML that all three new/expanded pages emit valid
+  `FAQPage` and `BreadcrumbList` JSON-LD with no parse errors.

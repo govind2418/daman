@@ -20,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/support",
     "/login",
     "/register",
+    "/download",
     "/terms",
     "/privacy",
     "/responsible-play",

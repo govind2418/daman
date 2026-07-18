@@ -12,10 +12,12 @@ const highlights = [
 export function AuthLayout({
   title,
   description,
+  breadcrumbs,
   children,
 }: {
   title: string;
   description: string;
+  breadcrumbs?: ReactNode;
   children: ReactNode;
 }) {
   return (
@@ -24,6 +26,10 @@ export function AuthLayout({
         <div className="absolute -left-32 top-0 h-80 w-80 rounded-full bg-brand-red/20 blur-[100px]" />
         <div className="absolute right-0 bottom-0 h-80 w-80 rounded-full bg-brand-orange/15 blur-[100px]" />
       </div>
+
+      {breadcrumbs && (
+        <Container className="mb-8 max-w-5xl">{breadcrumbs}</Container>
+      )}
 
       <Container className="grid max-w-5xl items-center gap-10 lg:grid-cols-2">
         <div className="hidden lg:block">
