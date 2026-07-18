@@ -272,3 +272,111 @@ All of this is independent of the content questions above.
   type="application/ld+json">` block out of the built HTML for all 18
   interior routes plus the homepage — all parse successfully with the
   expected `@type` values.
+
+---
+
+# Addendum — Homepage content rewrite
+
+Generated 2026-07-18, same day, third session. Nothing above this line was
+edited or removed. This addendum records a content change (not just
+technical work): the homepage was rewritten at the user's explicit
+direction to remove fictional/unverifiable/placeholder content, per rules
+against inventing statistics, player counts, testimonials, press coverage,
+audits/certifications, licensing claims, or responsible-gaming claims
+beyond what's already supported elsewhere in the repo.
+
+## What changed on the homepage (`src/app/page.tsx` and homepage-only components)
+
+- **Removed the real-money contradiction from the homepage itself.** The
+  homepage no longer states "there is no real-money wagering anywhere on
+  the platform" (§1, row 1 above). It was not replaced with any other claim
+  about the platform's monetary/legal status — the sentence was deleted per
+  the "if it can't be verified, omit it, don't replace it with another
+  claim" rule. **Note:** the sitewide `Footer` (§1, row 6) still carries
+  this same claim on every page, including the homepage, because `Footer`
+  is shared layout chrome, not homepage content — it was explicitly out of
+  scope for "rewrite the homepage." Confirmed via built HTML that the only
+  remaining instance of the phrase on `/` comes from the footer, not from
+  any homepage-authored content.
+- **Removed all fabricated statistics** (`StatsSection`: 500,000+ players,
+  10M+ matches, 100% fair play) — component deleted, no replacement numbers
+  invented.
+- **Removed the fabricated testimonials** (`Testimonials`: three named
+  players with 5-star ratings) — component deleted.
+- **Removed the fabricated "independent audits" claim** (`FeatureGrid`) —
+  component deleted; its legitimate, non-fabricated content (matchmaking,
+  rewards, support exist as real features) now lives in the new "Account
+  Features" section on the homepage using neutral wording grounded in
+  pages that actually exist (`/tournaments`, `/leaderboard`, `/rewards`).
+- **Removed the promotional email-capture `Newsletter` and hype-copy
+  `CtaBand`** ("Your rank is waiting. Claim it.") — both deleted; they were
+  promotional rather than informational, and `Newsletter`'s form was
+  already flagged in §3 as non-functional (no backend).
+- **Removed the homepage FAQ preview** (`FaqPreview`) rather than editing
+  the shared `lib/faq.ts` data it pulls from — that file also feeds `/faq`,
+  which is out of scope here. `lib/faq.ts` (including its "Is Daman Game a
+  real-money gambling platform?" entry, §1 row 2) is untouched.
+- **Rewrote `Hero`**: dropped the promotional tagline ("Play Fearless. Rise
+  Legendary."), the "India's Premium Skill-Gaming Arena" badge, and four
+  unverified/promotional "trust badges" (Fair Play, Instant Rewards, Daily
+  Bonuses, 24/7 Support presented as certifications). Also removed the
+  `PhoneMockup` device mockup, which displayed a fabricated concurrent
+  player count ("12,480 players in") as literal on-screen text, and
+  `FloatingDecor`. Both component files deleted (no longer used anywhere).
+  Hero is now a plain title + one neutral description sentence + Log In /
+  Register / Browse Games actions.
+- **"Download" / access**: no evidence of an installable app exists in this
+  repository (no APK, no app-store links, no store badges anywhere in
+  `src/` or `public/`) — the only existing claim of iOS/Android
+  availability is the FAQ entry noted above, which was left untouched since
+  it's outside homepage scope. The new homepage does **not** repeat or
+  extend that claim; it describes access neutrally as browser-based at
+  damangame.co.in with no installation required, which is verifiable
+  directly from the fact that this repository is a web application with no
+  native app code.
+- **Gameplay overview**: reuses the existing `name`/`tagline` fields from
+  `src/lib/games.ts` (already-established site copy, not newly invented)
+  for the four real game categories, but deliberately omits the per-category
+  and per-title player-count fields from that same file — those are the
+  unverifiable numbers already flagged in the first addendum above.
+- **Account features**: describes tournaments, leaderboard ranking, Daman
+  Points/reward tiers, and account settings — all grounded in pages that
+  already exist (`/tournaments`, `/leaderboard`, `/rewards` with its real
+  Bronze/Silver/Gold/Platinum tier names, and the registration form fields),
+  with no numbers attached.
+- **Responsible-use wording**: states only the 18+ age requirement for
+  account creation (consistent with `RegisterForm`, `Terms of Service`,
+  `Responsible Play`, and the FAQ — not a new claim) and links to
+  `/responsible-play` and `/support` for anything further, rather than
+  restating those pages' content. It does **not** assert the platform is
+  "skill-based, not gambling," does **not** claim any license, and does
+  **not** describe self-exclusion/limit-setting tools beyond what
+  `/responsible-play` itself already states (which this pass did not edit).
+- **Metadata description** updated to drop "premium" and "skill-based
+  gaming arena" framing; title left unchanged (keyword-descriptive, not a
+  factual claim).
+
+## Files deleted (homepage-exclusive, confirmed via repo-wide grep before removal)
+`src/components/home/FeatureGrid.tsx`, `StatsSection.tsx`, `Testimonials.tsx`,
+`FaqPreview.tsx`, `Newsletter.tsx`, `CtaBand.tsx`, `PhoneMockup.tsx`,
+`FloatingDecor.tsx`.
+
+## Still open (unchanged, out of scope for a homepage-only task)
+Every other row in §1 and §2 above is still live exactly as originally
+found — the real-money claim in `Footer.tsx`, `Terms of Service`,
+`Responsible Play`, and `lib/faq.ts`; the fabricated stats on `/about` and
+in `RegisterForm`; the fabricated press coverage on `/press`; the
+unverifiable entrant/leaderboard numbers on `/tournaments` and
+`/leaderboard`; and the sister-companies skill-based framing extended to
+third-party domains. None of these were touched, since the task explicitly
+scoped this pass to the homepage.
+
+## Verification
+- `npx tsc --noEmit`: clean.
+- `npx eslint .`: clean.
+- `npx next build`: succeeds, all 30 routes prerender.
+- Confirmed via built HTML (`grep` for the removed phrases/names/numbers
+  against `.next/server/app/index.html`) that none of the deleted
+  fabricated content survives on the rendered homepage; the one remaining
+  match for "No real-money wagering" traces to the sitewide footer, not to
+  homepage-authored content.
