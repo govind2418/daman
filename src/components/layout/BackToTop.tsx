@@ -19,6 +19,8 @@ export function BackToTop() {
       type="button"
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       aria-label="Back to top"
+      aria-hidden={!visible}
+      tabIndex={visible ? 0 : -1}
       className={cn(
         "glass fixed bottom-24 right-5 z-40 flex h-11 w-11 items-center justify-center rounded-full text-white shadow-lg transition-all duration-300 hover:text-brand-gold sm:bottom-8",
         visible

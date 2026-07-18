@@ -1,7 +1,12 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useInView, useMotionValue, useSpring } from "framer-motion";
+
+const EASE_OUT_DURATION = 1400;
+
+function easeOutExpo(t: number) {
+  return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+}
 
 export function StatCounter({
   value,
@@ -15,23 +20,44 @@ export function StatCounter({
   label: string;
 }) {
   const ref = useRef<HTMLParagraphElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
-  const motionValue = useMotionValue(0);
-  const springValue = useSpring(motionValue, { damping: 24, stiffness: 60 });
   const [display, setDisplay] = useState(0);
 
   useEffect(() => {
-    if (isInView) {
-      motionValue.set(value);
-    }
-  }, [isInView, motionValue, value]);
+    const node = ref.current;
+    if (!node) return;
 
-  useEffect(() => {
-    const unsubscribe = springValue.on("change", (latest) => {
-      setDisplay(Math.round(latest));
-    });
-    return unsubscribe;
-  }, [springValue]);
+    let frame: number;
+    let hasAnimated = false;
+
+    const animate = () => {
+      const start = performance.now();
+      const tick = (now: number) => {
+        const progress = Math.min((now - start) / EASE_OUT_DURATION, 1);
+        setDisplay(Math.round(value * easeOutExpo(progress)));
+        if (progress < 1) {
+          frame = requestAnimationFrame(tick);
+        }
+      };
+      frame = requestAnimationFrame(tick);
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated) {
+          hasAnimated = true;
+          animate();
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "-80px" },
+    );
+
+    observer.observe(node);
+    return () => {
+      observer.disconnect();
+      cancelAnimationFrame(frame);
+    };
+  }, [value]);
 
   return (
     <div className="text-center">

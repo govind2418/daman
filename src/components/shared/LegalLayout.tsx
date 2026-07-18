@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { PageHero } from "@/components/shared/PageHero";
 import { Container } from "@/components/ui/Container";
 
@@ -11,15 +12,22 @@ export function LegalLayout({
   title,
   lastUpdated,
   sections,
+  breadcrumbs,
 }: {
   eyebrow: string;
   title: string;
   lastUpdated: string;
   sections: LegalSection[];
+  breadcrumbs?: ReactNode;
 }) {
   return (
     <>
-      <PageHero eyebrow={eyebrow} title={title} description={`Last updated ${lastUpdated}`} />
+      <PageHero
+        eyebrow={eyebrow}
+        title={title}
+        description={`Last updated ${lastUpdated}`}
+        breadcrumbs={breadcrumbs}
+      />
 
       <section className="py-16 sm:py-20">
         <Container className="max-w-3xl space-y-10">

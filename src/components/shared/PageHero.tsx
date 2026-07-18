@@ -5,11 +5,13 @@ export function PageHero({
   eyebrow,
   title,
   description,
+  breadcrumbs,
   children,
 }: {
   eyebrow: string;
   title: ReactNode;
   description?: string;
+  breadcrumbs?: ReactNode;
   children?: ReactNode;
 }) {
   return (
@@ -23,6 +25,7 @@ export function PageHero({
         className="pointer-events-none absolute right-0 top-20 h-64 w-64 rounded-full bg-brand-orange/20 blur-[90px]"
       />
       <Container className="relative text-center">
+        {breadcrumbs && <div className="mb-5">{breadcrumbs}</div>}
         <span className="inline-block rounded-full border border-brand-orange/30 bg-brand-orange/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-brand-gold">
           {eyebrow}
         </span>

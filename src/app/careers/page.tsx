@@ -2,16 +2,21 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { MapPin, Clock, ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/shared/PageHero";
+import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
+import { RelatedLinks } from "@/components/shared/RelatedLinks";
+import { JsonLd } from "@/components/shared/JsonLd";
 import { Container } from "@/components/ui/Container";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
+import { pageMetadata, breadcrumbJsonLd } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Careers",
   description:
     "Join the team building Daman Game — open roles in engineering, design, and player operations.",
-};
+  path: "/careers",
+});
 
 const roles = [
   { title: "Senior Frontend Engineer", team: "Platform", location: "Remote", type: "Full-time" },
@@ -28,6 +33,7 @@ export default function CareersPage() {
         eyebrow="Join Us"
         title="Help build the fairest arena in gaming"
         description="We're a small, focused team solving hard problems in matchmaking, fairness, and player experience."
+        breadcrumbs={<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Careers" }]} />}
       />
 
       <section className="py-16 sm:py-20">
@@ -65,6 +71,21 @@ export default function CareersPage() {
           </p>
         </Container>
       </section>
+
+      <RelatedLinks
+        links={[
+          { label: "About", href: "/about", description: "Our story and what we stand for." },
+          { label: "Press", href: "/press", description: "Media resources and recent coverage." },
+          { label: "Contact", href: "/contact", description: "Reach the team directly." },
+        ]}
+      />
+
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Careers", path: "/careers" },
+        ])}
+      />
     </>
   );
 }

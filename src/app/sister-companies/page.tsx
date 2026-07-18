@@ -1,14 +1,19 @@
 import type { Metadata } from "next";
 import { ArrowUpRight, Gamepad2 } from "lucide-react";
 import { PageHero } from "@/components/shared/PageHero";
+import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
+import { RelatedLinks } from "@/components/shared/RelatedLinks";
+import { JsonLd } from "@/components/shared/JsonLd";
 import { Container } from "@/components/ui/Container";
 import { GlassCard } from "@/components/ui/GlassCard";
+import { pageMetadata, breadcrumbJsonLd } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Sister Companies",
   description:
     "Daman Game is part of a wider family of skill-gaming platforms. Discover our sister company 6club.",
-};
+  path: "/sister-companies",
+});
 
 const sisterCompanies = [
   {
@@ -38,6 +43,7 @@ export default function SisterCompaniesPage() {
         eyebrow="Our Family"
         title="Sister companies"
         description="Daman Game is proud to be part of a group of platforms built around fair, skill-based competitive gaming."
+        breadcrumbs={<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Sister Companies" }]} />}
       />
 
       <section className="py-16 sm:py-20">
@@ -70,6 +76,20 @@ export default function SisterCompaniesPage() {
           </div>
         </Container>
       </section>
+
+      <RelatedLinks
+        links={[
+          { label: "About", href: "/about", description: "Our story and what we stand for." },
+          { label: "Games", href: "/games", description: "Browse all four game categories." },
+        ]}
+      />
+
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Sister Companies", path: "/sister-companies" },
+        ])}
+      />
     </>
   );
 }

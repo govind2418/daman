@@ -1,16 +1,21 @@
 import type { Metadata } from "next";
 import { Calendar, Users, Trophy, ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/shared/PageHero";
+import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
+import { RelatedLinks } from "@/components/shared/RelatedLinks";
+import { JsonLd } from "@/components/shared/JsonLd";
 import { Container } from "@/components/ui/Container";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
+import { pageMetadata, breadcrumbJsonLd } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Tournaments",
   description:
     "Browse upcoming Daman Game tournaments across Arcade, Strategy, Racing, and Puzzle — register for bracket and leaderboard formats.",
-};
+  path: "/tournaments",
+});
 
 const tournaments = [
   {
@@ -58,6 +63,7 @@ export default function TournamentsPage() {
         eyebrow="Compete"
         title="Tournaments built for serious climbers"
         description="Weekly cups, seasonal championships, and bracket series — all with transparent formats and fair matchmaking."
+        breadcrumbs={<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Tournaments" }]} />}
       />
 
       <section className="py-16 sm:py-20">
@@ -124,6 +130,21 @@ export default function TournamentsPage() {
           </div>
         </Container>
       </section>
+
+      <RelatedLinks
+        links={[
+          { label: "Games", href: "/games", description: "Browse all four game categories." },
+          { label: "Leaderboard", href: "/leaderboard", description: "See this week's top-ranked players." },
+          { label: "Rewards", href: "/rewards", description: "See what each reward tier unlocks." },
+        ]}
+      />
+
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Tournaments", path: "/tournaments" },
+        ])}
+      />
     </>
   );
 }

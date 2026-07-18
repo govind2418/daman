@@ -5,6 +5,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { BackToTop } from "@/components/layout/BackToTop";
 import { MobileStickyCta } from "@/components/layout/MobileStickyCta";
+import { JsonLd } from "@/components/shared/JsonLd";
 import { siteConfig } from "@/lib/site";
 
 const sora = Sora({
@@ -94,30 +95,24 @@ export default function RootLayout({
         <Footer />
         <BackToTop />
         <MobileStickyCta />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: siteConfig.fullName,
-              alternateName: ["Daman Game", "damangame", "Daman"],
-              url: siteConfig.url,
-              logo: `${siteConfig.url}/icon.svg`,
-              description: siteConfig.description,
-            }),
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: siteConfig.fullName,
+            alternateName: ["Daman Game", "damangame", "Daman"],
+            url: siteConfig.url,
+            logo: `${siteConfig.url}/icon.svg`,
+            description: siteConfig.description,
           }}
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              name: siteConfig.fullName,
-              alternateName: ["Daman Game", "damangame"],
-              url: siteConfig.url,
-            }),
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: siteConfig.fullName,
+            alternateName: ["Daman Game", "damangame"],
+            url: siteConfig.url,
           }}
         />
       </body>

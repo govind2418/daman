@@ -4,7 +4,12 @@ import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
+import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
+import { RelatedLinks } from "@/components/shared/RelatedLinks";
+import { JsonLd } from "@/components/shared/JsonLd";
 import { blogPosts, getBlogPost } from "@/lib/blog";
+import { pageMetadata, breadcrumbJsonLd } from "@/lib/seo";
+import { siteConfig } from "@/lib/site";
 
 export function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
@@ -18,10 +23,11 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = getBlogPost(slug);
   if (!post) return {};
-  return {
+  return pageMetadata({
     title: post.title,
     description: post.excerpt,
-  };
+    path: `/blog/${slug}`,
+  });
 }
 
 export default async function BlogPostPage({
@@ -33,12 +39,23 @@ export default async function BlogPostPage({
   const post = getBlogPost(slug);
   if (!post) notFound();
 
+  const url = `${siteConfig.url}/blog/${slug}`;
+  const publishedDate = new Date(post.date).toISOString();
+
   return (
     <article className="pb-20 pt-32 sm:pt-40">
       <Container className="max-w-2xl">
+        <Breadcrumbs
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Blog", href: "/blog" },
+            { label: post.title },
+          ]}
+        />
+
         <Link
           href="/blog"
-          className="inline-flex items-center gap-1.5 text-sm font-medium text-muted hover:text-brand-gold"
+          className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-muted hover:text-brand-gold"
         >
           <ArrowLeft size={15} aria-hidden /> Back to blog
         </Link>
@@ -62,6 +79,44 @@ export default async function BlogPostPage({
           ))}
         </div>
       </Container>
+
+      <RelatedLinks
+        heading="Continue exploring"
+        links={[
+          { label: "Games", href: "/games", description: "Browse all four game categories." },
+          { label: "Tournaments", href: "/tournaments", description: "Browse weekly cups and seasonal championships." },
+          { label: "Leaderboard", href: "/leaderboard", description: "See this week's top-ranked players." },
+        ]}
+      />
+
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          headline: post.title,
+          description: post.excerpt,
+          datePublished: publishedDate,
+          dateModified: publishedDate,
+          url,
+          mainEntityOfPage: url,
+          articleSection: post.category,
+          publisher: {
+            "@type": "Organization",
+            name: siteConfig.fullName,
+            logo: {
+              "@type": "ImageObject",
+              url: `${siteConfig.url}/icon.svg`,
+            },
+          },
+        }}
+      />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Blog", path: "/blog" },
+          { name: post.title, path: `/blog/${slug}` },
+        ])}
+      />
     </article>
   );
 }

@@ -1,15 +1,20 @@
 import type { Metadata } from "next";
 import { Target, ShieldCheck, Users, Rocket } from "lucide-react";
 import { PageHero } from "@/components/shared/PageHero";
+import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
+import { RelatedLinks } from "@/components/shared/RelatedLinks";
+import { JsonLd } from "@/components/shared/JsonLd";
 import { Container } from "@/components/ui/Container";
-import { GlassCard } from "@/components/ui/GlassCard";
+import { IconCard } from "@/components/ui/IconCard";
 import { StatCounter } from "@/components/ui/StatCounter";
+import { pageMetadata, breadcrumbJsonLd } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "About",
   description:
     "Daman Game is on a mission to build the fairest, fastest competitive gaming platform for skilled players everywhere.",
-};
+  path: "/about",
+});
 
 const values = [
   {
@@ -45,6 +50,7 @@ export default function AboutPage() {
         eyebrow="Our Story"
         title="Building the arena competitive players deserve"
         description="Daman Game started with a simple frustration: most gaming platforms reward spend over skill. We set out to build the opposite."
+        breadcrumbs={<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About" }]} />}
       />
 
       <section className="py-16 sm:py-20">
@@ -76,22 +82,27 @@ export default function AboutPage() {
             </h2>
           </div>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {values.map(({ icon: Icon, title, description }) => (
-              <GlassCard key={title} as="article">
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-brand-red/20 to-brand-orange/20">
-                  <Icon size={20} className="text-brand-gold" aria-hidden />
-                </div>
-                <h3 className="mt-4 font-display text-lg font-bold text-white">
-                  {title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">
-                  {description}
-                </p>
-              </GlassCard>
+            {values.map(({ icon, title, description }) => (
+              <IconCard key={title} icon={icon} title={title} description={description} headingLevel="h3" />
             ))}
           </div>
         </Container>
       </section>
+
+      <RelatedLinks
+        links={[
+          { label: "Careers", href: "/careers", description: "See open roles on the team." },
+          { label: "Press", href: "/press", description: "Media resources and recent coverage." },
+          { label: "Blog", href: "/blog", description: "Product updates and insights." },
+        ]}
+      />
+
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "About", path: "/about" },
+        ])}
+      />
     </>
   );
 }

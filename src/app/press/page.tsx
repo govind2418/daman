@@ -1,15 +1,20 @@
 import type { Metadata } from "next";
 import { Download, Newspaper } from "lucide-react";
 import { PageHero } from "@/components/shared/PageHero";
+import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
+import { RelatedLinks } from "@/components/shared/RelatedLinks";
+import { JsonLd } from "@/components/shared/JsonLd";
 import { Container } from "@/components/ui/Container";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Button } from "@/components/ui/Button";
+import { pageMetadata, breadcrumbJsonLd } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Press",
   description:
     "Media resources, brand assets, and recent coverage for Daman Game.",
-};
+  path: "/press",
+});
 
 const mentions = [
   { outlet: "GameWire Daily", headline: "Daman Game crosses 500K ranked players in under two years", date: "Jun 2026" },
@@ -24,6 +29,7 @@ export default function PressPage() {
         eyebrow="Press"
         title="Media resources & recent coverage"
         description="For interviews, brand assets, or press inquiries, reach our media team directly."
+        breadcrumbs={<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Press" }]} />}
       >
         <div className="mt-8 flex justify-center">
           <Button href="/contact" variant="primary" size="lg" icon={<Download size={18} aria-hidden />}>
@@ -54,6 +60,21 @@ export default function PressPage() {
           </div>
         </Container>
       </section>
+
+      <RelatedLinks
+        links={[
+          { label: "About", href: "/about", description: "Our story and what we stand for." },
+          { label: "Careers", href: "/careers", description: "See open roles on the team." },
+          { label: "Blog", href: "/blog", description: "Product updates and insights." },
+        ]}
+      />
+
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Press", path: "/press" },
+        ])}
+      />
     </>
   );
 }

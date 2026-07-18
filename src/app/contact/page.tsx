@@ -1,15 +1,20 @@
 import type { Metadata } from "next";
 import { Mail, MessageCircle, MapPin } from "lucide-react";
 import { PageHero } from "@/components/shared/PageHero";
+import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
+import { RelatedLinks } from "@/components/shared/RelatedLinks";
+import { JsonLd } from "@/components/shared/JsonLd";
 import { Container } from "@/components/ui/Container";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { ContactForm } from "@/components/forms/ContactForm";
+import { pageMetadata, breadcrumbJsonLd } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Contact",
   description:
     "Get in touch with the Daman Game team — support, press, partnerships, and careers.",
-};
+  path: "/contact",
+});
 
 const channels = [
   { icon: MessageCircle, title: "Live Chat", detail: "Available 24/7 in-app" },
@@ -24,6 +29,7 @@ export default function ContactPage() {
         eyebrow="Get in Touch"
         title="We're here to help"
         description="Questions about your account, a tournament, or a partnership? Send us a message."
+        breadcrumbs={<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Contact" }]} />}
       />
 
       <section className="py-16 sm:py-20">
@@ -45,6 +51,20 @@ export default function ContactPage() {
           <ContactForm />
         </Container>
       </section>
+
+      <RelatedLinks
+        links={[
+          { label: "Support", href: "/support", description: "Browse help center topics." },
+          { label: "FAQ", href: "/faq", description: "Answers to common questions." },
+        ]}
+      />
+
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Contact", path: "/contact" },
+        ])}
+      />
     </>
   );
 }

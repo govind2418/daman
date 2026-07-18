@@ -2,15 +2,21 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Users } from "lucide-react";
 import { PageHero } from "@/components/shared/PageHero";
+import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
+import { RelatedLinks } from "@/components/shared/RelatedLinks";
+import { JsonLd } from "@/components/shared/JsonLd";
 import { Container } from "@/components/ui/Container";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { gameCategories } from "@/lib/games";
+import { pageMetadata, breadcrumbJsonLd } from "@/lib/seo";
+import { siteConfig } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Games",
   description:
     "Browse Daman Game's skill-based game categories — Arcade, Strategy, Racing, and Puzzle — and jump into ranked matches today.",
-};
+  path: "/games",
+});
 
 export default function GamesPage() {
   return (
@@ -19,6 +25,7 @@ export default function GamesPage() {
         eyebrow="Game Library"
         title="Four arenas. One competitive edge."
         description="Every category is built around fair matchmaking and genuine skill progression — pick your arena and start climbing."
+        breadcrumbs={<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Games" }]} />}
       />
 
       <section className="py-16 sm:py-20">
@@ -59,6 +66,33 @@ export default function GamesPage() {
           </div>
         </Container>
       </section>
+
+      <RelatedLinks
+        links={[
+          { label: "Tournaments", href: "/tournaments", description: "Browse weekly cups and seasonal championships." },
+          { label: "Leaderboard", href: "/leaderboard", description: "See the top-ranked players this week." },
+          { label: "Rewards", href: "/rewards", description: "See what each reward tier unlocks." },
+        ]}
+      />
+
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Games", path: "/games" },
+        ])}
+      />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          itemListElement: gameCategories.map((category, index) => ({
+            "@type": "ListItem",
+            position: index + 1,
+            name: category.name,
+            url: `${siteConfig.url}/games/${category.slug}`,
+          })),
+        }}
+      />
     </>
   );
 }

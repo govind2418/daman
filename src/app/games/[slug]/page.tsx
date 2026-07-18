@@ -2,10 +2,14 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Users, ArrowRight, Trophy } from "lucide-react";
 import { PageHero } from "@/components/shared/PageHero";
+import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
+import { RelatedLinks } from "@/components/shared/RelatedLinks";
+import { JsonLd } from "@/components/shared/JsonLd";
 import { Container } from "@/components/ui/Container";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Button } from "@/components/ui/Button";
 import { gameCategories, getGameCategory } from "@/lib/games";
+import { pageMetadata, breadcrumbJsonLd } from "@/lib/seo";
 
 export function generateStaticParams() {
   return gameCategories.map((category) => ({ slug: category.slug }));
@@ -19,10 +23,11 @@ export async function generateMetadata({
   const { slug } = await params;
   const category = getGameCategory(slug);
   if (!category) return {};
-  return {
+  return pageMetadata({
     title: category.name,
     description: `${category.description} Join ${category.players} active players in the ${category.name} arena.`,
-  };
+    path: `/games/${slug}`,
+  });
 }
 
 export default async function GameCategoryPage({
@@ -40,6 +45,15 @@ export default async function GameCategoryPage({
         eyebrow={category.tagline}
         title={category.name}
         description={category.description}
+        breadcrumbs={
+          <Breadcrumbs
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Games", href: "/games" },
+              { label: category.name },
+            ]}
+          />
+        }
       >
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Button href="/register" variant="primary" size="lg" icon={<ArrowRight size={18} aria-hidden />}>
@@ -78,6 +92,26 @@ export default async function GameCategoryPage({
           </div>
         </Container>
       </section>
+
+      <RelatedLinks
+        heading="More arenas"
+        links={gameCategories
+          .filter((c) => c.slug !== category.slug)
+          .slice(0, 3)
+          .map((c) => ({
+            label: c.name,
+            href: `/games/${c.slug}`,
+            description: c.tagline,
+          }))}
+      />
+
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Games", path: "/games" },
+          { name: category.name, path: `/games/${category.slug}` },
+        ])}
+      />
     </>
   );
 }

@@ -1,16 +1,21 @@
 import type { Metadata } from "next";
 import { Check, Gift, Medal, Crown, Gem } from "lucide-react";
 import { PageHero } from "@/components/shared/PageHero";
+import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
+import { RelatedLinks } from "@/components/shared/RelatedLinks";
+import { JsonLd } from "@/components/shared/JsonLd";
 import { Container } from "@/components/ui/Container";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
+import { pageMetadata, breadcrumbJsonLd } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Rewards",
   description:
     "Explore the Daman Game reward tiers — Bronze, Silver, Gold, and Platinum — and see what each rank unlocks.",
-};
+  path: "/rewards",
+});
 
 const tiers = [
   {
@@ -50,6 +55,7 @@ export default function RewardsPage() {
         eyebrow="Rewards"
         title="Rank up. Unlock more."
         description="Every match and tournament earns Daman Points — climb the tiers to unlock cosmetics, priority queues, and exclusive access."
+        breadcrumbs={<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Rewards" }]} />}
       />
 
       <section className="py-16 sm:py-20">
@@ -94,6 +100,21 @@ export default function RewardsPage() {
           </div>
         </Container>
       </section>
+
+      <RelatedLinks
+        links={[
+          { label: "Games", href: "/games", description: "Browse all four game categories." },
+          { label: "Tournaments", href: "/tournaments", description: "Browse weekly cups and seasonal championships." },
+          { label: "Leaderboard", href: "/leaderboard", description: "See this week's top-ranked players." },
+        ]}
+      />
+
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Rewards", path: "/rewards" },
+        ])}
+      />
     </>
   );
 }

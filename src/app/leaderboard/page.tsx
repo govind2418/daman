@@ -1,14 +1,19 @@
 import type { Metadata } from "next";
 import { Crown } from "lucide-react";
 import { PageHero } from "@/components/shared/PageHero";
+import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
+import { RelatedLinks } from "@/components/shared/RelatedLinks";
+import { JsonLd } from "@/components/shared/JsonLd";
 import { Container } from "@/components/ui/Container";
 import { cn } from "@/lib/utils";
+import { pageMetadata, breadcrumbJsonLd } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Leaderboard",
   description:
     "See the top-ranked Daman Game players across Arcade, Strategy, Racing, and Puzzle this season.",
-};
+  path: "/leaderboard",
+});
 
 const players = [
   { rank: 1, name: "ShadowRift", category: "Racing", points: 98240 },
@@ -36,6 +41,7 @@ export default function LeaderboardPage() {
         eyebrow="Global Rankings"
         title="This week's top players"
         description="Rankings update in real time based on ranked match performance across all four arenas."
+        breadcrumbs={<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Leaderboard" }]} />}
       />
 
       <section className="py-16 sm:py-20">
@@ -75,6 +81,21 @@ export default function LeaderboardPage() {
           </div>
         </Container>
       </section>
+
+      <RelatedLinks
+        links={[
+          { label: "Tournaments", href: "/tournaments", description: "Browse weekly cups and seasonal championships." },
+          { label: "Games", href: "/games", description: "Browse all four game categories." },
+          { label: "Rewards", href: "/rewards", description: "See what each reward tier unlocks." },
+        ]}
+      />
+
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Leaderboard", path: "/leaderboard" },
+        ])}
+      />
     </>
   );
 }

@@ -8,12 +8,18 @@ import { FaqPreview } from "@/components/home/FaqPreview";
 import { Newsletter } from "@/components/home/Newsletter";
 import { CtaBand } from "@/components/home/CtaBand";
 import { Container } from "@/components/ui/Container";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Daman Game — Daman Login, Tournaments & Rewards",
-  description:
-    "Daman Game (damangame) is India's premium skill-based gaming arena. Daman Login to compete in tournaments, climb the leaderboard, and unlock rewards on Daman Game.",
-};
+const homeTitle = "Daman Game — Daman Login, Tournaments & Rewards";
+const homeDescription =
+  "Daman Game (damangame) is India's premium skill-based gaming arena. Daman Login to compete in tournaments, climb the leaderboard, and unlock rewards on Daman Game.";
+
+export const metadata: Metadata = pageMetadata({
+  title: homeTitle,
+  description: homeDescription,
+  path: "",
+  ogTitle: homeTitle,
+});
 
 export default function Home() {
   return (

@@ -1,6 +1,15 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 
 export function MobileStickyCta() {
+  const pathname = usePathname();
+
+  if (pathname === "/login" || pathname === "/register") {
+    return null;
+  }
+
   return (
     <div className="glass-nav fixed inset-x-0 bottom-0 z-40 flex gap-3 border-t border-white/10 px-4 py-3 lg:hidden">
       <Button href="/login" variant="outline" size="sm" className="flex-1">

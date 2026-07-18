@@ -1,6 +1,3 @@
-"use client";
-
-import { motion, type Variants } from "framer-motion";
 import { ShieldCheck, Zap, Gift, Headphones, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
@@ -13,19 +10,6 @@ const trustBadges = [
   { icon: Gift, label: "Daily Bonuses" },
   { icon: Headphones, label: "24/7 Support" },
 ];
-
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      delay: i * 0.1,
-      ease: [0.22, 1, 0.36, 1] as const,
-    },
-  }),
-};
 
 export function Hero() {
   return (
@@ -70,15 +54,11 @@ export function Hero() {
 
       <Container className="grid items-center gap-16 lg:grid-cols-2 lg:gap-12">
         <div className="text-center lg:text-left">
-          <motion.span
-            initial="hidden"
-            animate="visible"
-            custom={0}
-            variants={fadeUp}
-            className="inline-flex items-center gap-2 rounded-full border border-brand-orange/30 bg-brand-orange/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-brand-gold"
+          <span
+            className="inline-flex animate-fade-up items-center gap-2 rounded-full border border-brand-orange/30 bg-brand-orange/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-brand-gold"
           >
             Daman Game — India&rsquo;s Premium Skill-Gaming Arena
-          </motion.span>
+          </span>
 
           <h1 className="mt-6 font-display text-5xl font-extrabold uppercase leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
             <span className="text-white">Play</span>{" "}
@@ -88,24 +68,16 @@ export function Hero() {
             <span className="text-gradient-fire">Legendary</span>
           </h1>
 
-          <motion.p
-            initial="hidden"
-            animate="visible"
-            custom={2}
-            variants={fadeUp}
-            className="mx-auto mt-6 max-w-md text-base leading-relaxed text-muted sm:text-lg lg:mx-0"
+          <p
+            className="mx-auto mt-6 max-w-md animate-fade-up text-base leading-relaxed text-muted [animation-delay:0.2s] sm:text-lg lg:mx-0"
           >
             Join Daman Game to compete in premium tournaments, climb the
             global leaderboard, and unlock rewards built for serious
             players.
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            custom={3}
-            variants={fadeUp}
-            className="mx-auto mt-8 grid max-w-md grid-cols-2 gap-3 sm:grid-cols-4 lg:mx-0"
+          <div
+            className="mx-auto mt-8 grid max-w-md animate-fade-up grid-cols-2 gap-3 [animation-delay:0.3s] sm:grid-cols-4 lg:mx-0"
           >
             {trustBadges.map(({ icon: Icon, label }) => (
               <div
@@ -118,14 +90,10 @@ export function Hero() {
                 </span>
               </div>
             ))}
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            custom={4}
-            variants={fadeUp}
-            className="mt-8 flex flex-col items-center gap-3 sm:flex-row lg:items-start lg:justify-start"
+          <div
+            className="mt-8 flex animate-fade-up flex-col items-center gap-3 [animation-delay:0.4s] sm:flex-row lg:items-start lg:justify-start"
           >
             <Button
               href="/register"
@@ -141,18 +109,13 @@ export function Hero() {
             <Button href="/leaderboard" variant="outline" size="lg">
               View Leaderboard
             </Button>
-          </motion.div>
+          </div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.92 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as const }}
-          className="relative mx-auto flex justify-center py-6 lg:py-0"
-        >
+        <div className="relative mx-auto flex animate-scale-in justify-center py-6 lg:py-0">
           <FloatingDecor />
           <PhoneMockup />
-        </motion.div>
+        </div>
       </Container>
     </section>
   );

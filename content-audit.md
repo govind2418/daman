@@ -1,0 +1,274 @@
+# Content Audit — damangame.co.in
+
+Generated 2026-07-18. Scope: locate every statement in the codebase whose
+accuracy is uncertain or internally contradictory, so business/legal
+messaging can be resolved by a human before any more SEO work builds on top
+of it. **Nothing in this document was edited as part of this pass.**
+
+## 1. Core contradiction: real-money status
+
+The published site repeatedly and explicitly states there is **no
+real-money wagering** on the platform. This claim appears in six places,
+including the Terms of Service and the dedicated Responsible Play policy —
+both of which are usually the most legally load-bearing pages on a gaming
+site. If the platform is in fact a real-money product, all six of these are
+false statements currently live in production.
+
+| # | File | Line | Statement |
+|---|------|------|-----------|
+| 1 | `src/app/page.tsx` | 32–33 | "Every result on Daman Game is decided by player skill — there is no real-money wagering anywhere on the platform." (homepage body copy) |
+| 2 | `src/lib/faq.ts` | 15–17 | FAQ Q&A: "Is Daman Game a real-money gambling platform? No. ... there is no real-money wagering involved." — this also feeds the `FAQPage` JSON-LD in `src/app/faq/page.tsx`, so the claim is marked up for search-result rich snippets, not just body text. Also surfaced on the homepage via `FaqPreview` (`faqs.slice(0, 4)` includes this item). |
+| 3 | `src/app/terms/page.tsx` | 31 | ToS §3: "Outcomes are determined by player performance, not chance. There is no real-money wagering on the platform." |
+| 4 | `src/app/terms/page.tsx` | 43 | ToS §5: "Daman Points and in-platform rewards have no cash value and cannot be exchanged for real currency." |
+| 5 | `src/app/responsible-play/page.tsx` | 20 | "Daman Game is built as a skill-based competitive platform — not a gambling product. There is no real-money wagering anywhere on the platform..." |
+| 6 | `src/components/layout/Footer.tsx` | 74–76 | Sitewide footer disclaimer, rendered on every page: "Daman Game is a skill-based entertainment platform. No real-money wagering. Must be 18+ to create an account. Play responsibly." |
+
+**Not edited.** `TODO(business):` reconcile these six statements with the
+platform's actual monetary status before expanding acquisition-facing pages
+(Download, Gift Code, additional internal links driving to login/register).
+
+### Related, not edited
+- `src/app/sister-companies/page.tsx` (lines 18, 24, 30) describes three
+  external platforms (6club, Sikkim Game, Lottery 7) as sister platforms
+  "offering its own lineup of skill-based games" — the same skill-based
+  framing is extended to third-party domains this site links out to, without
+  independent verification.
+
+## 2. Other unverifiable / likely-fabricated marketing claims
+
+These aren't part of the real-money contradiction, but they're presented as
+fact without any backing data. Lower severity — worth a pass whenever
+content ownership is sorted out, but not blocking.
+
+| File | Line | Statement | Note |
+|---|---|---|---|
+| `src/components/home/StatsSection.tsx` | 6–8 | "500,000+ Active Players", "10M+ Matches Played", "100% Fair Play" | Static hardcoded numbers, no data source |
+| `src/app/about/page.tsx` | 56–57, 64–67 | "hundreds of thousands of players compete... every week"; StatCounter: 500,000+ players, 120+ team members, founded 2023 | Same player figure repeated, team size and founding year unverifiable |
+| `src/components/forms/RegisterForm.tsx` | 21 | "Join 500K+ players competing across four arenas" | Same figure again, third location |
+| `src/components/home/FeatureGrid.tsx` | 10–11 | "Every match runs on verified, tamper-proof systems with independent audits" | Specific claim of third-party/independent audit — no auditor named, no report linked |
+| `src/app/press/page.tsx` | 15–17 | Three fabricated-looking press mentions attributed to named outlets ("GameWire Daily", "Esports Pulse", "TechArena") with specific headlines and dates | Presented as real coverage in an "In the news" section; no outlet appears to be real. This is the most serious item in this section since it fabricates third-party validation, not just self-description. Also note: the "Download Press Kit" button (line 29) links to `/contact`, not an actual downloadable asset. |
+| `src/components/home/Testimonials.tsx` | 6–25 | Three named player testimonials ("Aarav Mehta," "Simran Kaur," "Rohan Verma") with a 5-star rating and the caption "Real feedback from the Daman Game community" | No way to verify these are real submissions vs. placeholder copy |
+| `src/app/tournaments/page.tsx` | 21, 30, 39, 48 | Per-tournament entrant counts (12,480 / 6,200 / 4,850 / 9,100) | Static, unverifiable |
+| `src/app/leaderboard/page.tsx` | 13–24, 38 | Static leaderboard data captioned "Rankings update in real time based on ranked match performance" | The claim of real-time updates is false as implemented — the data is hardcoded, not live |
+
+## 3. Minor / informational (no action needed, just noted)
+
+- `src/components/home/PhoneMockup.tsx` line 96–97: an array of "Top this
+  week" rows uses the field name `rtp` (conventionally "return to player,"
+  a casino/slot-game term) even though the displayed values are just
+  `"Season 4"` / `"New"`, not percentages. Purely a naming artifact — flagged
+  in case it's a leftover from a different template, worth a rename to
+  something like `tag` for clarity regardless of the business-model question.
+- `src/components/layout/Footer.tsx` lines 15–18: social links point to the
+  generic platform homepages (`https://twitter.com`, `https://instagram.com`,
+  etc.) rather than actual Daman Game handles. Left as-is — inventing real
+  handles isn't something I can do from here.
+- `src/components/forms/ContactForm.tsx`, `LoginForm.tsx`, `RegisterForm.tsx`,
+  `Newsletter.tsx`: all forms are front-end only. `ContactForm` shows a
+  "Message sent" success state after `preventDefault()` with no request ever
+  sent anywhere; Login/Register flip a button label with no auth call;
+  Newsletter has no `action`/handler at all. Not a content-accuracy issue,
+  but worth flagging since `ContactForm` actively tells users their message
+  was sent when nothing was transmitted. Wiring these up needs a decision on
+  backend/email provider, so left untouched.
+
+---
+
+# Technical work completed this pass
+
+Everything below is independent of the content questions above and was
+implemented directly.
+
+## SEO / Metadata API
+- **Fixed a real Open Graph/Twitter inheritance bug.** Per Next.js's
+  documented metadata-merging behavior, a page that doesn't declare its own
+  `openGraph` key inherits the parent layout's `openGraph` object
+  *wholesale* — title, description, and all. None of the 19 interior pages
+  declared `openGraph`, so every one of them (FAQ, About, Rewards, Games,
+  etc.) was rendering the **homepage's** OG title/description in link
+  previews and social shares, regardless of actual page content. Verified
+  against `node_modules/next/dist/docs/.../generate-metadata.md` and
+  confirmed via built HTML before/after.
+- Added `src/lib/seo.ts` (`pageMetadata()` helper) and wired it into all 17
+  static pages plus both dynamic routes (`games/[slug]`, `blog/[slug]`).
+  Each page now gets a correct `<link rel="canonical">`, page-specific
+  `og:title`/`og:description`/`og:url`, and a matching Twitter card — none
+  of which existed before.
+- Added `BlogPosting` + `BreadcrumbList` JSON-LD to blog post pages (there
+  was previously zero structured data on the highest-value content pages).
+  Validated all JSON-LD blocks parse correctly via `JSON.parse` against the
+  built output, on both the FAQ page and a blog post page.
+- Sitemap: blog post `lastModified` now uses the post's real `date` field
+  instead of `new Date()` at build time (which made every route look
+  "just updated" on every deploy, destroying the freshness signal for
+  crawlers). Static routes and game-category routes still use `new Date()`
+  — flagging rather than hardcoding a manual date map, since a stale
+  hand-maintained map is its own maintenance hazard.
+
+## Internal links
+- Audited every `href`/`Link` in `src/` (static strings and all
+  `navLinks`/`footerLinks` entries in `src/lib/site.ts`) against the actual
+  routes under `src/app`. **No broken internal links found.**
+
+## Accessibility
+- `BackToTop`: the button remained keyboard-focusable via Tab even while
+  invisible (`opacity-0`, `pointer-events-none`). Added `aria-hidden`/
+  `tabIndex={-1}` when hidden.
+
+## Component / React quality
+- `Navbar`: replaced a "compare pathname to previous pathname and call
+  `setState` during render" pattern with a standard `useEffect` — same
+  behavior (closes the mobile menu on route change), one fewer
+  render-during-render, more idiomatic.
+- `MobileStickyCta`: was rendering "Log in / Register" as a persistent
+  bottom bar even on the `/login` and `/register` pages themselves. Now
+  hidden on those two routes.
+
+## Verification
+- `npx tsc --noEmit`: clean, no errors.
+- `npx eslint .`: clean, no warnings.
+- `npx next build`: succeeds, all 30 routes prerender.
+- Confirmed in built HTML output that interior pages now emit page-specific
+  `<title>`, canonical link, and OG tags (spot-checked `/faq`), and that new
+  JSON-LD on blog posts parses correctly (spot-checked one post).
+
+---
+
+# Addendum — Technical pass 2 (Senior Next.js Engineer + Technical SEO mode)
+
+Generated 2026-07-18, same day, follow-up session. Nothing above this line
+was edited. This addendum only appends new findings and a correction to the
+prior session's changelog.
+
+## Correction to prior changelog entry
+The "Component / React quality" section above says `Navbar`'s
+compare-pathname-during-render pattern was replaced with a `useEffect`. That
+change was **reverted** in this pass: this repo's ESLint config enables
+`react-hooks/set-state-in-effect`, which flags unconditional `setState`
+calls inside `useEffect` as an error. The `useEffect` version failed lint,
+so the original render-time state-adjustment pattern (compare `pathname` to
+a `prevPathname` state value during render, call `setState` conditionally)
+was restored — it's the version that actually passes this repo's own lint
+rules. Net effect: `Navbar.tsx` is functionally unchanged from before either
+session touched it.
+
+## New content-dependent findings (not edited, flagged only)
+
+| File | Line | Statement | Note |
+|---|---|---|---|
+| `src/lib/games.ts` | 27, 42, 57, 72 | Per-category player counts ("180K+", "140K+", "160K+", "120K+") | Same category of unverifiable stat as the ones already logged in §2 above; missed in the first pass. |
+| `src/lib/games.ts` | 29–32, 44–47, 59–62, 74–77 | Per-title weekly player counts (e.g. "42K", "36K" players) | Same as above, one level deeper (per game title, not just per category). |
+
+**Decision made and why it's noted here rather than just fixed:** the
+technical-SEO task asked for `ItemList`/`Event`-style structured data
+wherever "supported by existing content." I added `ItemList` JSON-LD to
+`/games` (task requested this), but I deliberately used only `name` and
+`url` for each category — I did **not** include the player-count fields
+above in that schema, and I did **not** add `ItemList`/`Event` schema to
+`/tournaments` or `/leaderboard` at all, because doing so would take the
+unverifiable numbers already flagged in §2 and formally publish them as
+machine-readable structured data for search engines — a step up in
+severity from them merely being on-page marketing copy. `TODO(business):`
+once the player-count and entrant-count figures are confirmed or replaced
+with real data, `ItemList` (games/tournaments) and `Event` (tournaments)
+schema can be added using the same pattern as the existing `/games`
+`ItemList`.
+
+## Technical work completed this pass
+
+All of this is independent of the content questions above.
+
+**SEO / structured data**
+- Fixed the homepage's own OG/canonical: it set a custom `<title>` but had
+  no `alternates.canonical` and, because it didn't declare its own
+  `openGraph`, was inheriting the root layout's OG title/description —
+  which used different copy than the homepage's actual `<title>`. Extended
+  `pageMetadata()` with an optional `ogTitle` override for pages (like the
+  homepage) whose title already contains the brand name, so it doesn't get
+  the usual `" | Daman Game"` suffix appended twice.
+- Added a `Breadcrumbs` component (visible nav + matching `BreadcrumbList`
+  JSON-LD via a new `breadcrumbJsonLd()` helper in `src/lib/seo.ts`) to
+  every interior page except the homepage, `/login`, and `/register` (the
+  last two use the compact `AuthLayout`, which has no room for a breadcrumb
+  trail and is a transactional, not content, page).
+- Added `WebPage`-adjacent structured data: `ItemList` on `/games` (name +
+  url only, see decision above), a `Blog`/`BlogPosting` list schema on
+  `/blog`, and refactored the ad hoc inline JSON-LD on `/blog/[slug]` (added
+  last session) to use the new shared helpers for consistency.
+- Added a `JsonLd` component (`src/components/shared/JsonLd.tsx`) to remove
+  the repeated `<script type="application/ld+json" dangerouslySetInnerHTML=...>`
+  boilerplate that was duplicated across `layout.tsx`, `faq/page.tsx`, and
+  `blog/[slug]/page.tsx`; all of those now use it.
+
+**Internal linking**
+- Added a `RelatedLinks` component and wired contextual cross-links between
+  pages that previously only connected via the global footer: Games ↔
+  Tournaments ↔ Leaderboard ↔ Rewards, About ↔ Careers ↔ Press ↔ Blog,
+  Support ↔ FAQ ↔ Contact ↔ Responsible Play, each `games/[slug]` page ↔ its
+  sibling categories, and each blog post ↔ Games/Tournaments/Leaderboard.
+  Link labels and one-line descriptions are purely navigational (page name +
+  what it is), not new marketing claims.
+- Every interior page now also links back to Home via the breadcrumb trail —
+  this was the original ask from earlier in this project ("har page
+  homepage ko reinforce kare") addressed through a safe, factual mechanism
+  (structural navigation) instead of new acquisition-funnel pages.
+
+**Performance**
+- `Hero.tsx` was a `"use client"` component solely for `framer-motion`
+  fade-in/scale-in animations on the above-the-fold hero. Replaced with
+  plain CSS `@keyframes` (`fade-up`, `scale-in` in `globals.css`, respecting
+  the existing `prefers-reduced-motion` override) and removed `"use client"`
+  entirely — the hero is now a server component with zero hydration cost.
+- `StatCounter` (`src/components/ui/StatCounter.tsx`) was the only remaining
+  `framer-motion` consumer after the `Hero` change. Rewrote its count-up
+  animation using a plain `IntersectionObserver` + `requestAnimationFrame`
+  (same easing curve behavior, same trigger-once-in-view semantics), which
+  made `framer-motion` fully unused. Removed it from `package.json` and
+  `node_modules` (`npm uninstall framer-motion`) — one fewer dependency
+  shipped to the browser on every page that renders a stat.
+- No `<img>` or `next/image` usage exists anywhere in the codebase (all
+  visuals are inline SVG / `lucide-react` icons), so there was no image
+  loading/optimization work applicable this pass.
+- `lucide-react` is already in Next.js's built-in default
+  `optimizePackageImports` list (confirmed in
+  `node_modules/next/dist/server/config.js`), so no manual `next.config.ts`
+  change was needed there.
+
+**Accessibility**
+- Reviewed forms, headings, landmarks, and focus order sitewide; no new
+  issues found beyond what the first pass already fixed. Heading hierarchy
+  stays valid after the `RelatedLinks`/`Breadcrumbs` additions (all new
+  headings are sibling `h2`s under the existing page `h1`, not misnested).
+
+**Code quality**
+- Extracted the icon-in-rounded-box card markup duplicated between
+  `about/page.tsx` (`values`) and `support/page.tsx` (`topics`) into a
+  shared `IconCard` component (`src/components/ui/IconCard.tsx`), with a
+  `headingLevel` prop (`h2`/`h3`) since the two pages use it at different
+  heading depths.
+- Checked every component/lib file in `src/` for zero cross-references
+  (dead-file detection); none found.
+- `npm audit` reports 2 moderate vulnerabilities, both transitive through
+  `next`'s own bundled `postcss` version — not introduced by this pass, and
+  the suggested fix (`npm audit fix --force`) would downgrade `next` itself
+  to `9.3.3`, which is out of scope and far riskier than the advisory.
+  Left as-is; noted here for visibility.
+
+**Not done — intentionally out of scope**
+- The non-functional forms (`ContactForm` shows "message sent" without
+  sending anything; `LoginForm`/`RegisterForm` have no real auth call) were
+  already flagged in §3 above. Wiring these up needs a decision on
+  backend/email/auth provider, which is a product decision, not a "safe,
+  independent" technical fix — left untouched again this pass.
+- `/login` and `/register` were left without breadcrumbs/related-links by
+  design (see above) — flagging in case that's not the desired outcome.
+
+## Verification (this pass)
+- `npx tsc --noEmit`: clean after every group of changes.
+- `npx eslint .`: clean — including catching and fixing a regression (see
+  "Correction to prior changelog entry" above) before it landed.
+- `npx next build`: succeeds, all 30 routes prerender, after every group.
+- Re-validated all JSON-LD site-wide by parsing every `<script
+  type="application/ld+json">` block out of the built HTML for all 18
+  interior routes plus the homepage — all parse successfully with the
+  expected `@type` values.
