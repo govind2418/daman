@@ -70,6 +70,9 @@ export default function SupportPage() {
           { label: "FAQ", href: "/faq", description: "Answers to common questions." },
           { label: "Contact", href: "/contact", description: "Reach the team directly." },
           { label: "Responsible Play", href: "/responsible-play", description: "Our approach to player wellbeing." },
+          { label: "Login", href: "/login", description: "Sign in to an existing account." },
+          { label: "Register", href: "/register", description: "Create a free account." },
+          { label: "Rewards", href: "/rewards", description: "View reward tiers and perks." },
         ]}
       />
 

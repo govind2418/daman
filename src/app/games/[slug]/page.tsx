@@ -95,14 +95,18 @@ export default async function GameCategoryPage({
 
       <RelatedLinks
         heading="More arenas"
-        links={gameCategories
-          .filter((c) => c.slug !== category.slug)
-          .slice(0, 3)
-          .map((c) => ({
-            label: c.name,
-            href: `/games/${c.slug}`,
-            description: c.tagline,
-          }))}
+        links={[
+          ...gameCategories
+            .filter((c) => c.slug !== category.slug)
+            .map((c) => ({
+              label: c.name,
+              href: `/games/${c.slug}`,
+              description: c.tagline,
+            })),
+          { label: "Tournaments", href: "/tournaments", description: "Browse weekly cups and seasonal championships." },
+          { label: "Leaderboard", href: "/leaderboard", description: "See this week's top-ranked players." },
+          { label: "Rewards", href: "/rewards", description: "See what each reward tier unlocks." },
+        ]}
       />
 
       <JsonLd

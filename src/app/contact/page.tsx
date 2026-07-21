@@ -56,6 +56,10 @@ export default function ContactPage() {
         links={[
           { label: "Support", href: "/support", description: "Browse help center topics." },
           { label: "FAQ", href: "/faq", description: "Answers to common questions." },
+          { label: "About", href: "/about", description: "Our story and what we stand for." },
+          { label: "Careers", href: "/careers", description: "See open roles on the team." },
+          { label: "Press", href: "/press", description: "Media resources and recent coverage." },
+          { label: "Responsible Play", href: "/responsible-play", description: "Our approach to player wellbeing." },
         ]}
       />
 

@@ -3,6 +3,7 @@ import { AuthLayout } from "@/components/shared/AuthLayout";
 import { LoginForm } from "@/components/forms/LoginForm";
 import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
 import { RelatedLinks } from "@/components/shared/RelatedLinks";
+import { TableOfContents } from "@/components/shared/TableOfContents";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -29,7 +30,15 @@ export default function LoginPage() {
         <LoginForm />
       </AuthLayout>
 
-      <section className="py-16 sm:py-20">
+      <TableOfContents
+        items={[
+          { label: "How It Works", href: "#how-it-works" },
+          { label: "Trouble Logging In", href: "#help" },
+          { label: "Login FAQ", href: "#login-faq" },
+        ]}
+      />
+
+      <section id="how-it-works" className="py-16 sm:py-20">
         <Container className="max-w-3xl">
           <SectionHeading
             align="left"
@@ -67,7 +76,7 @@ export default function LoginPage() {
         </Container>
       </section>
 
-      <section className="border-y border-white/5 bg-surface/50 py-16 sm:py-20">
+      <section id="help" className="border-y border-white/5 bg-surface/50 py-16 sm:py-20">
         <Container className="max-w-3xl">
           <div className="grid gap-6 sm:grid-cols-2">
             <GlassCard as="article">
@@ -96,7 +105,7 @@ export default function LoginPage() {
         </Container>
       </section>
 
-      <section className="py-16 sm:py-20">
+      <section id="login-faq" className="py-16 sm:py-20">
         <Container className="max-w-3xl">
           <SectionHeading eyebrow="Login FAQ" title="Common login questions" />
           <div className="mt-10">
@@ -110,6 +119,9 @@ export default function LoginPage() {
           { label: "Register", href: "/register", description: "Create a free account." },
           { label: "Download", href: "/download", description: "How to access Daman Game." },
           { label: "Support", href: "/support", description: "Browse help center topics." },
+          { label: "FAQ", href: "/faq", description: "Answers to common questions." },
+          { label: "Contact", href: "/contact", description: "Reach the team directly." },
+          { label: "Games", href: "/games", description: "Browse all four game categories." },
         ]}
       />
 

@@ -106,6 +106,9 @@ export default function RewardsPage() {
           { label: "Games", href: "/games", description: "Browse all four game categories." },
           { label: "Tournaments", href: "/tournaments", description: "Browse weekly cups and seasonal championships." },
           { label: "Leaderboard", href: "/leaderboard", description: "See this week's top-ranked players." },
+          { label: "Register", href: "/register", description: "Create a free account." },
+          { label: "FAQ", href: "/faq", description: "Answers to common questions." },
+          { label: "Support", href: "/support", description: "Browse help center topics." },
         ]}
       />
 

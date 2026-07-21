@@ -81,6 +81,8 @@ export default function SisterCompaniesPage() {
         links={[
           { label: "About", href: "/about", description: "Our story and what we stand for." },
           { label: "Games", href: "/games", description: "Browse all four game categories." },
+          { label: "Press", href: "/press", description: "Media resources and recent coverage." },
+          { label: "Careers", href: "/careers", description: "See open roles on the team." },
         ]}
       />
 

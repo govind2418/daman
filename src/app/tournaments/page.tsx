@@ -136,6 +136,8 @@ export default function TournamentsPage() {
           { label: "Games", href: "/games", description: "Browse all four game categories." },
           { label: "Leaderboard", href: "/leaderboard", description: "See this week's top-ranked players." },
           { label: "Rewards", href: "/rewards", description: "See what each reward tier unlocks." },
+          { label: "Register", href: "/register", description: "Create a free account." },
+          { label: "Login", href: "/login", description: "Sign in to an existing account." },
         ]}
       />
 

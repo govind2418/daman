@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/shared/PageHero";
 import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
+import { RelatedLinks } from "@/components/shared/RelatedLinks";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { Container } from "@/components/ui/Container";
 import { GlassCard } from "@/components/ui/GlassCard";
@@ -55,6 +56,15 @@ export default function BlogPage() {
           </div>
         </Container>
       </section>
+
+      <RelatedLinks
+        links={[
+          { label: "About", href: "/about", description: "Our story and what we stand for." },
+          { label: "Games", href: "/games", description: "Browse all four game categories." },
+          { label: "Tournaments", href: "/tournaments", description: "Browse weekly cups and seasonal championships." },
+          { label: "Press", href: "/press", description: "Media resources and recent coverage." },
+        ]}
+      />
 
       <JsonLd
         data={breadcrumbJsonLd([

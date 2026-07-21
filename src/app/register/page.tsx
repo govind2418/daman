@@ -3,6 +3,7 @@ import { AuthLayout } from "@/components/shared/AuthLayout";
 import { RegisterForm } from "@/components/forms/RegisterForm";
 import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
 import { RelatedLinks } from "@/components/shared/RelatedLinks";
+import { TableOfContents } from "@/components/shared/TableOfContents";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -49,7 +50,15 @@ export default function RegisterPage() {
         <RegisterForm />
       </AuthLayout>
 
-      <section className="py-16 sm:py-20">
+      <TableOfContents
+        items={[
+          { label: "Account Requirements", href: "#account-requirements" },
+          { label: "After You Register", href: "#after-you-register" },
+          { label: "Registration FAQ", href: "#registration-faq" },
+        ]}
+      />
+
+      <section id="account-requirements" className="py-16 sm:py-20">
         <Container className="max-w-3xl">
           <SectionHeading
             align="left"
@@ -72,7 +81,7 @@ export default function RegisterPage() {
         </Container>
       </section>
 
-      <section className="border-y border-white/5 bg-surface/50 py-16 sm:py-20">
+      <section id="after-you-register" className="border-y border-white/5 bg-surface/50 py-16 sm:py-20">
         <Container className="max-w-3xl text-center">
           <h2 className="font-display text-xl font-bold text-white sm:text-2xl">
             After you register
@@ -85,7 +94,7 @@ export default function RegisterPage() {
         </Container>
       </section>
 
-      <section className="py-16 sm:py-20">
+      <section id="registration-faq" className="py-16 sm:py-20">
         <Container className="max-w-3xl">
           <SectionHeading eyebrow="Registration FAQ" title="Common registration questions" />
           <div className="mt-10">
@@ -99,6 +108,9 @@ export default function RegisterPage() {
           { label: "Login", href: "/login", description: "Sign in to an existing account." },
           { label: "Games", href: "/games", description: "Browse all four game categories." },
           { label: "Rewards", href: "/rewards", description: "View reward tiers and perks." },
+          { label: "Tournaments", href: "/tournaments", description: "Browse weekly cups and seasonal championships." },
+          { label: "FAQ", href: "/faq", description: "Answers to common questions." },
+          { label: "Responsible Play", href: "/responsible-play", description: "Our approach to player wellbeing." },
         ]}
       />
 

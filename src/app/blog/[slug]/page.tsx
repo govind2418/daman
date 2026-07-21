@@ -86,6 +86,9 @@ export default async function BlogPostPage({
           { label: "Games", href: "/games", description: "Browse all four game categories." },
           { label: "Tournaments", href: "/tournaments", description: "Browse weekly cups and seasonal championships." },
           { label: "Leaderboard", href: "/leaderboard", description: "See this week's top-ranked players." },
+          { label: "Rewards", href: "/rewards", description: "See what each reward tier unlocks." },
+          { label: "Blog", href: "/blog", description: "Back to all articles." },
+          { label: "About", href: "/about", description: "Our story and what we stand for." },
         ]}
       />
 

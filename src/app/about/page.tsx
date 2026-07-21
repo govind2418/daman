@@ -3,6 +3,7 @@ import { Target, ShieldCheck, Users, Rocket } from "lucide-react";
 import { PageHero } from "@/components/shared/PageHero";
 import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
 import { RelatedLinks } from "@/components/shared/RelatedLinks";
+import { TableOfContents } from "@/components/shared/TableOfContents";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { Container } from "@/components/ui/Container";
 import { IconCard } from "@/components/ui/IconCard";
@@ -53,7 +54,15 @@ export default function AboutPage() {
         breadcrumbs={<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About" }]} />}
       />
 
-      <section className="py-16 sm:py-20">
+      <TableOfContents
+        items={[
+          { label: "Our Story", href: "#our-story" },
+          { label: "By the Numbers", href: "#by-the-numbers" },
+          { label: "What We Stand For", href: "#what-we-stand-for" },
+        ]}
+      />
+
+      <section id="our-story" className="py-16 sm:py-20">
         <Container className="max-w-3xl text-center">
           <p className="text-base leading-relaxed text-muted sm:text-lg">
             Founded by a small team of competitive players and engineers,
@@ -65,7 +74,7 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <section className="border-y border-white/5 bg-surface/50 py-16">
+      <section id="by-the-numbers" className="border-y border-white/5 bg-surface/50 py-16">
         <Container className="grid grid-cols-2 gap-8 sm:grid-cols-4">
           <StatCounter value={500000} suffix="+" label="Active Players" />
           <StatCounter value={4} label="Game Categories" />
@@ -74,7 +83,7 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <section className="py-16 sm:py-20">
+      <section id="what-we-stand-for" className="py-16 sm:py-20">
         <Container>
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="font-display text-3xl font-bold text-white sm:text-4xl">
@@ -94,6 +103,9 @@ export default function AboutPage() {
           { label: "Careers", href: "/careers", description: "See open roles on the team." },
           { label: "Press", href: "/press", description: "Media resources and recent coverage." },
           { label: "Blog", href: "/blog", description: "Product updates and insights." },
+          { label: "Sister Companies", href: "/sister-companies", description: "Related platforms and companies." },
+          { label: "Games", href: "/games", description: "Browse all four game categories." },
+          { label: "Contact", href: "/contact", description: "Reach the team directly." },
         ]}
       />
 

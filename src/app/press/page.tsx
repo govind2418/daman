@@ -66,6 +66,8 @@ export default function PressPage() {
           { label: "About", href: "/about", description: "Our story and what we stand for." },
           { label: "Careers", href: "/careers", description: "See open roles on the team." },
           { label: "Blog", href: "/blog", description: "Product updates and insights." },
+          { label: "Contact", href: "/contact", description: "Reach the team directly." },
+          { label: "Sister Companies", href: "/sister-companies", description: "Related platforms and companies." },
         ]}
       />
 

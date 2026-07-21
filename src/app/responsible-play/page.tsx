@@ -53,6 +53,8 @@ export default function ResponsiblePlayPage() {
         links={[
           { label: "Support", href: "/support", description: "Browse help center topics." },
           { label: "Contact", href: "/contact", description: "Reach the team directly." },
+          { label: "Terms of Service", href: "/terms", description: "Platform rules and account eligibility." },
+          { label: "Privacy Policy", href: "/privacy", description: "How your account data is handled." },
         ]}
       />
       <JsonLd

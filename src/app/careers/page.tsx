@@ -77,6 +77,8 @@ export default function CareersPage() {
           { label: "About", href: "/about", description: "Our story and what we stand for." },
           { label: "Press", href: "/press", description: "Media resources and recent coverage." },
           { label: "Contact", href: "/contact", description: "Reach the team directly." },
+          { label: "Blog", href: "/blog", description: "Product updates and insights." },
+          { label: "Sister Companies", href: "/sister-companies", description: "Related platforms and companies." },
         ]}
       />
 

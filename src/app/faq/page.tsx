@@ -35,6 +35,10 @@ export default function FaqPage() {
         links={[
           { label: "Support", href: "/support", description: "Browse help center topics." },
           { label: "Contact", href: "/contact", description: "Reach the team directly." },
+          { label: "Login", href: "/login", description: "Sign in to an existing account." },
+          { label: "Register", href: "/register", description: "Create a free account." },
+          { label: "Download", href: "/download", description: "How to access Daman Game." },
+          { label: "Responsible Play", href: "/responsible-play", description: "Our approach to player wellbeing." },
         ]}
       />
 

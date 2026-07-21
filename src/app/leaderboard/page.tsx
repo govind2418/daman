@@ -87,6 +87,8 @@ export default function LeaderboardPage() {
           { label: "Tournaments", href: "/tournaments", description: "Browse weekly cups and seasonal championships." },
           { label: "Games", href: "/games", description: "Browse all four game categories." },
           { label: "Rewards", href: "/rewards", description: "See what each reward tier unlocks." },
+          { label: "Register", href: "/register", description: "Create a free account." },
+          { label: "Login", href: "/login", description: "Sign in to an existing account." },
         ]}
       />
 

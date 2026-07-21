@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { LegalLayout } from "@/components/shared/LegalLayout";
 import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
+import { RelatedLinks } from "@/components/shared/RelatedLinks";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { pageMetadata, breadcrumbJsonLd } from "@/lib/seo";
 
@@ -57,6 +58,14 @@ export default function PrivacyPage() {
               "For privacy-related questions, reach out via our Contact page.",
             ],
           },
+        ]}
+      />
+      <RelatedLinks
+        links={[
+          { label: "Terms of Service", href: "/terms", description: "Platform rules and account eligibility." },
+          { label: "Responsible Play", href: "/responsible-play", description: "Our approach to player wellbeing." },
+          { label: "Support", href: "/support", description: "Browse help center topics." },
+          { label: "Contact", href: "/contact", description: "Reach the team directly." },
         ]}
       />
       <JsonLd

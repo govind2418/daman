@@ -1,11 +1,20 @@
 import type { ReactNode } from "react";
 import { PageHero } from "@/components/shared/PageHero";
 import { Container } from "@/components/ui/Container";
+import { TableOfContents } from "@/components/shared/TableOfContents";
 
 export type LegalSection = {
   heading: string;
   body: string[];
 };
+
+function slugify(heading: string) {
+  return heading
+    .toLowerCase()
+    .replace(/^\d+\.\s*/, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
 
 export function LegalLayout({
   eyebrow,
@@ -29,10 +38,19 @@ export function LegalLayout({
         breadcrumbs={breadcrumbs}
       />
 
+      {sections.length > 1 && (
+        <TableOfContents
+          items={sections.map((section) => ({
+            label: section.heading,
+            href: `#${slugify(section.heading)}`,
+          }))}
+        />
+      )}
+
       <section className="py-16 sm:py-20">
         <Container className="max-w-3xl space-y-10">
           {sections.map((section) => (
-            <div key={section.heading}>
+            <div key={section.heading} id={slugify(section.heading)}>
               <h2 className="font-display text-xl font-bold text-white">
                 {section.heading}
               </h2>

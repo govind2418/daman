@@ -3,6 +3,7 @@ import { Globe, MonitorSmartphone, Wifi } from "lucide-react";
 import { PageHero } from "@/components/shared/PageHero";
 import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
 import { RelatedLinks } from "@/components/shared/RelatedLinks";
+import { TableOfContents } from "@/components/shared/TableOfContents";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -56,7 +57,14 @@ export default function DownloadPage() {
         </div>
       </PageHero>
 
-      <section className="py-16 sm:py-20">
+      <TableOfContents
+        items={[
+          { label: "How to Access", href: "#how-to-access" },
+          { label: "Download FAQ", href: "#download-faq" },
+        ]}
+      />
+
+      <section id="how-to-access" className="py-16 sm:py-20">
         <Container>
           <SectionHeading eyebrow="How to Access" title="Getting started on the web" />
           <div className="mt-12 grid gap-6 sm:grid-cols-3">
@@ -67,7 +75,7 @@ export default function DownloadPage() {
         </Container>
       </section>
 
-      <section className="border-y border-white/5 bg-surface/50 py-16 sm:py-20">
+      <section id="download-faq" className="border-y border-white/5 bg-surface/50 py-16 sm:py-20">
         <Container className="max-w-3xl">
           <SectionHeading eyebrow="Download FAQ" title="Common access questions" />
           <div className="mt-10">
@@ -81,6 +89,9 @@ export default function DownloadPage() {
           { label: "Register", href: "/register", description: "Create a free account." },
           { label: "Login", href: "/login", description: "Sign in to an existing account." },
           { label: "Support", href: "/support", description: "Browse help center topics." },
+          { label: "FAQ", href: "/faq", description: "Answers to common questions." },
+          { label: "Games", href: "/games", description: "Browse all four game categories." },
+          { label: "Contact", href: "/contact", description: "Reach the team directly." },
         ]}
       />
 

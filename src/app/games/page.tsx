@@ -72,6 +72,8 @@ export default function GamesPage() {
           { label: "Tournaments", href: "/tournaments", description: "Browse weekly cups and seasonal championships." },
           { label: "Leaderboard", href: "/leaderboard", description: "See the top-ranked players this week." },
           { label: "Rewards", href: "/rewards", description: "See what each reward tier unlocks." },
+          { label: "Register", href: "/register", description: "Create a free account." },
+          { label: "Login", href: "/login", description: "Sign in to an existing account." },
         ]}
       />
 
