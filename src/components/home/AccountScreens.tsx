@@ -31,7 +31,7 @@ const accountScreens = [
 
 export function AccountScreens() {
   return (
-    <section className="py-16 sm:py-20">
+    <section id="account-screens" className="py-16 sm:py-20">
       <Container>
         <SectionHeading
           eyebrow="Account UI"

@@ -6,14 +6,17 @@ import { GlassCard } from "@/components/ui/GlassCard";
 export type RelatedLink = { label: string; href: string; description: string };
 
 export function RelatedLinks({
+  id,
   heading = "Explore more",
   links,
 }: {
+  id?: string;
   heading?: string;
   links: RelatedLink[];
 }) {
   return (
     <section
+      id={id}
       className="border-t border-white/5 py-16 sm:py-20"
       aria-labelledby="related-links-heading"
     >

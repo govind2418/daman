@@ -15,7 +15,7 @@ const screenshots = Array.from({ length: 21 }, (_, index) => index + 1)
 
 export function ScreenshotGallery() {
   return (
-    <section className="py-16 sm:py-20">
+    <section id="screenshots" className="py-16 sm:py-20">
       <Container>
         <SectionHeading
           eyebrow="Preview"

@@ -15,11 +15,15 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { IconCard } from "@/components/ui/IconCard";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Button } from "@/components/ui/Button";
+import { Accordion } from "@/components/ui/Accordion";
+import { Steps } from "@/components/ui/Steps";
 import { Hero } from "@/components/home/Hero";
 import { ScreenshotGallery } from "@/components/home/ScreenshotGallery";
 import { AccountScreens } from "@/components/home/AccountScreens";
 import { RelatedLinks } from "@/components/shared/RelatedLinks";
+import { TableOfContents } from "@/components/shared/TableOfContents";
 import { gameCategories } from "@/lib/games";
+import { faqs } from "@/lib/faq";
 import { pageMetadata } from "@/lib/seo";
 
 const homeTitle = "Daman Game — Daman Login, Tournaments & Rewards";
@@ -45,6 +49,109 @@ const quickInfo = [
   { feature: "Referral Program", details: "Invite Friends & Earn Rewards" },
   { feature: "Customer Support", details: "24×7 Help & Self-Service Center" },
   { feature: "Platform Access", details: "Mobile Browser & Android APK" },
+];
+
+const registerSteps = [
+  {
+    title: "Visit the official Daman Game website",
+    description:
+      "Open damangame.co.in in your browser. No installation is required — Daman Game runs entirely on the web.",
+  },
+  {
+    title: "Open the registration page",
+    description: "Select Register on the homepage to begin creating your account.",
+  },
+  {
+    title: "Enter your information",
+    description:
+      "Provide a display name, a valid email address, and a password of at least 8 characters, then confirm your password.",
+  },
+  {
+    title: "Confirm you're eligible",
+    description:
+      "Confirm you are 18 years of age or older and agree to the Terms of Service and Privacy Policy.",
+  },
+  {
+    title: "Finish registration",
+    description: "Select Create Account to finish. You can log in immediately afterward.",
+  },
+];
+
+const loginSteps = [
+  {
+    title: "Visit the official Daman Game website",
+    description: "Open damangame.co.in and go to the Login page.",
+  },
+  {
+    title: "Enter your registered email and password",
+    description: "Use the email address and password you created your account with.",
+  },
+  {
+    title: "Forgot your password?",
+    description:
+      "Select 'Forgot password?' on the Login page, which directs you to Contact so the support team can help you regain access.",
+  },
+  {
+    title: "Select Log In",
+    description: "You'll be taken straight to your account dashboard.",
+  },
+];
+
+const accessSteps = [
+  {
+    title: "No installation needed",
+    description:
+      "Daman Game is a web-based platform — there is no app to download or install on any device.",
+  },
+  {
+    title: "Visit damangame.co.in",
+    description:
+      "Open the site from any modern browser on desktop or mobile, including Chrome, Safari, Firefox, or Edge.",
+  },
+  {
+    title: "Log in or create an account",
+    description:
+      "Use Daman Login if you already have an account, or Register to create a new one and get started right away.",
+  },
+];
+
+const playSteps = [
+  {
+    title: "Sign in to your account",
+    description: "Open damangame.co.in and complete your Daman Login with your registered email and password.",
+  },
+  {
+    title: "Browse the game library",
+    description:
+      "Explore the four game categories — Arcade, Strategy, Racing, and Puzzle — each with its own set of titles.",
+  },
+  {
+    title: "Select a game and join a match",
+    description:
+      "Choose a title that interests you, then start matchmaking. You'll be paired with an opponent of a similar skill rank in under a second.",
+  },
+  {
+    title: "Play the match",
+    description: "Compete according to the game's rules — every title offers a different gameplay experience.",
+  },
+  {
+    title: "Check your results",
+    description:
+      "After each match, your result is reflected in your leaderboard ranking, and any Daman Points earned are credited to your account.",
+  },
+  {
+    title: "Track your progress",
+    description:
+      "View your leaderboard position, reward tier, and match history anytime from your account dashboard.",
+  },
+];
+
+const playTips = [
+  "Explore different game categories before choosing your favourites.",
+  "Read each game's instructions to understand how it works before joining a match.",
+  "Check the Rewards section regularly for new tiers and perks as you earn Daman Points.",
+  "Keep your account information secure and only sign in through the official damangame.co.in website.",
+  "Take breaks and play at a pace that works for you.",
 ];
 
 const gettingStarted = [
@@ -100,7 +207,27 @@ export default function Home() {
     <>
       <Hero />
 
-      <section className="border-y border-white/5 bg-surface/50 py-16 sm:py-20">
+      <TableOfContents
+        items={[
+          { label: "Getting Started", href: "#getting-started" },
+          { label: "Discover the Platform", href: "#discover-platform" },
+          { label: "How to Register", href: "#how-to-register" },
+          { label: "How to Login", href: "#how-to-login" },
+          { label: "How to Access", href: "#how-to-access" },
+          { label: "How to Play", href: "#how-to-play" },
+          { label: "What is Daman Game?", href: "#what-is-daman-game" },
+          { label: "Screenshots", href: "#screenshots" },
+          { label: "Account Dashboard", href: "#account-screens" },
+          { label: "Log In / Register / Access", href: "#login-register-access" },
+          { label: "Account Includes", href: "#account-includes" },
+          { label: "Game Categories", href: "#game-categories" },
+          { label: "FAQ", href: "#faq" },
+          { label: "Explore the Site", href: "#explore-site" },
+          { label: "Responsible Use", href: "#responsible-use" },
+        ]}
+      />
+
+      <section id="getting-started" className="border-y border-white/5 bg-surface/50 py-16 sm:py-20">
         <Container className="max-w-3xl">
           <h2 className="font-display text-2xl font-bold text-white sm:text-3xl">
             Getting Started with Daman Game
@@ -162,7 +289,7 @@ export default function Home() {
         </Container>
       </section>
 
-      <section className="py-16 sm:py-20">
+      <section id="discover-platform" className="py-16 sm:py-20">
         <Container className="max-w-3xl">
           <h2 className="font-display text-2xl font-bold text-white sm:text-3xl">
             Discover the Daman Game Platform
@@ -195,7 +322,87 @@ export default function Home() {
         </Container>
       </section>
 
-      <section className="py-16 sm:py-20">
+      <section id="how-to-register" className="py-16 sm:py-20">
+        <Container className="max-w-3xl">
+          <h2 className="font-display text-2xl font-bold text-white sm:text-3xl">
+            How to Register on Daman Game
+          </h2>
+          <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
+            Creating your Daman Game account only takes a few minutes. Once
+            registered, you&apos;ll be able to access the platform, explore
+            available games, and participate in ongoing promotions.
+          </p>
+          <Steps steps={registerSteps} />
+          <p className="mt-8 text-base leading-relaxed text-muted sm:text-lg">
+            After registration, you can immediately{" "}
+            <Link href="/login" className="font-semibold text-brand-gold hover:underline">
+              Daman Login
+            </Link>
+            , browse game categories, and track your Daman Points in the{" "}
+            <Link href="/rewards" className="font-semibold text-brand-gold hover:underline">
+              Rewards
+            </Link>{" "}
+            section.
+          </p>
+        </Container>
+      </section>
+
+      <section id="how-to-login" className="border-y border-white/5 bg-surface/50 py-16 sm:py-20">
+        <Container className="max-w-3xl">
+          <h2 className="font-display text-2xl font-bold text-white sm:text-3xl">
+            How to Login to Daman Game
+          </h2>
+          <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
+            Returning players can securely access their account in just a
+            few steps.
+          </p>
+          <Steps steps={loginSteps} />
+        </Container>
+      </section>
+
+      <section id="how-to-access" className="py-16 sm:py-20">
+        <Container className="max-w-3xl">
+          <h2 className="font-display text-2xl font-bold text-white sm:text-3xl">
+            How to Access Daman Game
+          </h2>
+          <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
+            Daman Game is accessed entirely through the web — there&apos;s no
+            app to download or install.
+          </p>
+          <Steps steps={accessSteps} />
+        </Container>
+      </section>
+
+      <section id="how-to-play" className="border-y border-white/5 bg-surface/50 py-16 sm:py-20">
+        <Container className="max-w-3xl">
+          <h2 className="font-display text-2xl font-bold text-white sm:text-3xl">
+            How to Play Games on Daman Game
+          </h2>
+          <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
+            Once you&apos;ve completed your{" "}
+            <Link href="/login" className="font-semibold text-brand-gold hover:underline">
+              Daman Game Login
+            </Link>{" "}
+            and your account is ready, you can start exploring the
+            platform&apos;s game collection across all four categories.
+          </p>
+          <Steps steps={playSteps} />
+
+          <h3 className="mt-10 font-display text-xl font-bold text-white">
+            Tips for new players
+          </h3>
+          <ul className="mt-4 space-y-2">
+            {playTips.map((tip) => (
+              <li key={tip} className="flex gap-2.5 text-sm leading-relaxed text-muted">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-gold" />
+                {tip}
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </section>
+
+      <section id="what-is-daman-game" className="py-16 sm:py-20">
         <Container className="max-w-3xl text-center">
           <h2 className="font-display text-2xl font-bold text-white sm:text-3xl">
             What is Daman Game?
@@ -232,7 +439,7 @@ export default function Home() {
 
       <AccountScreens />
 
-      <section className="border-y border-white/5 bg-surface/50 py-16 sm:py-20">
+      <section id="login-register-access" className="border-y border-white/5 bg-surface/50 py-16 sm:py-20">
         <Container>
           <SectionHeading eyebrow="Getting Started" title="Log in, register, or access the platform" />
           <div className="mt-12 grid gap-6 sm:grid-cols-3">
@@ -252,7 +459,7 @@ export default function Home() {
         </Container>
       </section>
 
-      <section className="py-16 sm:py-20">
+      <section id="account-includes" className="py-16 sm:py-20">
         <Container>
           <SectionHeading eyebrow="Account" title="What a Daman Game account includes" />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -263,7 +470,7 @@ export default function Home() {
         </Container>
       </section>
 
-      <section className="border-y border-white/5 bg-surface/50 py-16 sm:py-20">
+      <section id="game-categories" className="border-y border-white/5 bg-surface/50 py-16 sm:py-20">
         <Container>
           <SectionHeading eyebrow="Gameplay" title="Game categories" description="Daman Game currently offers four game categories, each with its own ranked ladder." />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -301,20 +508,54 @@ export default function Home() {
         </Container>
       </section>
 
+      <section id="faq" className="border-y border-white/5 bg-surface/50 py-16 sm:py-20">
+        <Container className="max-w-3xl">
+          <SectionHeading
+            eyebrow="FAQ"
+            title="Frequently asked questions about Daman Game"
+            description="Common questions about Daman Login, registration, tournaments, rewards, and more."
+          />
+          <div className="mt-12">
+            <Accordion items={faqs} />
+          </div>
+          <div className="mt-10 text-center">
+            <Button href="/faq" variant="outline" size="md" icon={<ArrowRight size={16} aria-hidden />}>
+              View all FAQs
+            </Button>
+          </div>
+        </Container>
+      </section>
+
       <RelatedLinks
+        id="explore-site"
         heading="Explore the site"
         links={[
           { label: "Games", href: "/games", description: "Browse all four game categories." },
+          { label: "Arcade", href: "/games/arcade", description: "Fast, skill-based arcade titles." },
+          { label: "Strategy", href: "/games/strategy", description: "Tactical, planning-focused titles." },
+          { label: "Racing", href: "/games/racing", description: "Speed and precision racing titles." },
+          { label: "Puzzle", href: "/games/puzzle", description: "Logic and pattern puzzle titles." },
           { label: "Tournaments", href: "/tournaments", description: "View upcoming and ongoing tournaments." },
           { label: "Leaderboard", href: "/leaderboard", description: "See current player rankings." },
           { label: "Rewards", href: "/rewards", description: "View reward tiers and perks." },
+          { label: "Daman Login", href: "/login", description: "Sign in to your account." },
+          { label: "Register", href: "/register", description: "Create a new Daman Game account." },
+          { label: "Download", href: "/download", description: "How to access Daman Game." },
+          { label: "FAQ", href: "/faq", description: "Answers to common questions." },
           { label: "About", href: "/about", description: "Information about Daman Game." },
           { label: "Support", href: "/support", description: "Help center and account topics." },
-          { label: "Download", href: "/download", description: "How to access Daman Game." },
+          { label: "Contact", href: "/contact", description: "Reach the support team directly." },
+          { label: "Blog", href: "/blog", description: "Gameplay guides and tournament recaps." },
+          { label: "Careers", href: "/careers", description: "Open roles at Daman Game." },
+          { label: "Press", href: "/press", description: "Company news and media resources." },
+          { label: "Sister Companies", href: "/sister-companies", description: "Related platforms and companies." },
+          { label: "Responsible Play", href: "/responsible-play", description: "Our responsible play policy." },
+          { label: "Terms of Service", href: "/terms", description: "Platform rules and account eligibility." },
+          { label: "Privacy Policy", href: "/privacy", description: "How your account data is handled." },
         ]}
       />
 
-      <section className="py-16 sm:py-20">
+      <section id="responsible-use" className="py-16 sm:py-20">
         <Container className="max-w-2xl text-center">
           <h2 className="font-display text-xl font-bold text-white sm:text-2xl">
             Responsible use
