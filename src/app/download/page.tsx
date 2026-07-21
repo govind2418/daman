@@ -18,6 +18,7 @@ export const metadata: Metadata = pageMetadata({
   description:
     "How to access Daman Game — no download or installation required. Play directly from a web browser at damangame.co.in.",
   path: "/download",
+  keywords: ["Daman App Download", "Daman Game APK", "Daman Game Web Access"],
 });
 
 const accessPoints = [

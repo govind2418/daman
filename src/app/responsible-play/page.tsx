@@ -18,7 +18,7 @@ export default function ResponsiblePlayPage() {
       <LegalLayout
         eyebrow="Player Wellbeing"
         title="Responsible Play"
-        lastUpdated="July 10, 2026"
+        lastUpdated="July 22, 2026"
         breadcrumbs={
           <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Responsible Play" }]} />
         }

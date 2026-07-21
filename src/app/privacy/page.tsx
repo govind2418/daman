@@ -17,7 +17,7 @@ export default function PrivacyPage() {
       <LegalLayout
         eyebrow="Legal"
         title="Privacy Policy"
-        lastUpdated="July 10, 2026"
+        lastUpdated="July 22, 2026"
         breadcrumbs={
           <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Privacy Policy" }]} />
         }

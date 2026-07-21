@@ -17,6 +17,7 @@ export const metadata: Metadata = pageMetadata({
   description:
     "Create your free Daman Game account in under a minute — already registered? Head to Daman Login instead.",
   path: "/register",
+  keywords: ["Daman Game Sign Up", "Daman Game Create Account", "Daman Game Invite Code"],
 });
 
 const requirements = [

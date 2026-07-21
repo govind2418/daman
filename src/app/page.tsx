@@ -35,6 +35,15 @@ export const metadata: Metadata = pageMetadata({
   description: homeDescription,
   path: "",
   ogTitle: homeTitle,
+  keywords: [
+    "Daman Game Login",
+    "Daman Game Register",
+    "Daman Game APK",
+    "Daman Game Official Website",
+    "Daman Game Tournaments",
+    "Daman Game Rewards",
+    "Daman Game FAQ",
+  ],
 });
 
 const quickInfo = [

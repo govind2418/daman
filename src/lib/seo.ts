@@ -1,24 +1,48 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/lib/site";
 
+export const coreKeywords = [
+  "Daman Game",
+  "Daman Login",
+  "damangame",
+  "Daman Game Login",
+  "Daman App",
+  "damangame.co.in",
+  "Daman Game Register",
+  "Daman Game Download",
+];
+
 export function pageMetadata({
   title,
   description,
   path,
   ogTitle,
+  keywords,
 }: {
   title: string;
   description: string;
   path: string;
   /** Override the OG/Twitter title instead of appending " | Daman Game" — use when `title` already contains the brand name. */
   ogTitle?: string;
+  /** Page-specific keywords, appended after the site-wide core keyword set. */
+  keywords?: string[];
 }): Metadata {
   const url = `${siteConfig.url}${path}`;
   const resolvedOgTitle = ogTitle ?? `${title} | ${siteConfig.fullName}`;
+  const ogImage = {
+    url: "/images/daman-game-hero.jpg",
+    width: 1536,
+    height: 1024,
+    alt: "Daman Game — Play More, Win More",
+  };
+  const resolvedKeywords = keywords
+    ? Array.from(new Set([...coreKeywords, ...keywords]))
+    : coreKeywords;
 
   return {
     title,
     description,
+    keywords: resolvedKeywords,
     alternates: { canonical: url },
     openGraph: {
       title: resolvedOgTitle,
@@ -26,11 +50,13 @@ export function pageMetadata({
       url,
       siteName: siteConfig.fullName,
       type: "website",
+      images: [ogImage],
     },
     twitter: {
       card: "summary_large_image",
       title: resolvedOgTitle,
       description,
+      images: [ogImage.url],
     },
   };
 }

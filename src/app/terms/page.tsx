@@ -17,7 +17,7 @@ export default function TermsPage() {
       <LegalLayout
         eyebrow="Legal"
         title="Terms of Service"
-        lastUpdated="July 10, 2026"
+        lastUpdated="July 22, 2026"
         breadcrumbs={
           <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Terms of Service" }]} />
         }

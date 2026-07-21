@@ -17,6 +17,7 @@ export const metadata: Metadata = pageMetadata({
   description:
     "Daman Login — sign in to your Daman Game account to compete, climb the leaderboard, and unlock rewards on damangame.co.in.",
   path: "/login",
+  keywords: ["Daman Login App", "Daman Game Sign In", "Daman Game Account"],
 });
 
 export default function LoginPage() {

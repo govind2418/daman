@@ -33,9 +33,15 @@ export const metadata: Metadata = {
     "Daman Game",
     "Daman Login",
     "damangame",
+    "Daman Game Login",
+    "Daman App",
     "damangame.co.in",
-    "Daman Game login",
-    "Daman Game register",
+    "Daman Game Register",
+    "Daman Game Download",
+    "Daman Points",
+    "Daman Game Tournaments",
+    "Daman Game Leaderboard",
+    "Daman Game Rewards",
     "skill gaming",
     "esports tournaments",
     "gaming leaderboard",
@@ -49,11 +55,20 @@ export const metadata: Metadata = {
     title: `${siteConfig.fullName} — ${siteConfig.tagline}`,
     description: siteConfig.description,
     siteName: siteConfig.fullName,
+    images: [
+      {
+        url: "/images/daman-game-hero.jpg",
+        width: 1536,
+        height: 1024,
+        alt: "Daman Game — Play More, Win More",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${siteConfig.fullName} — ${siteConfig.tagline}`,
     description: siteConfig.description,
+    images: ["/images/daman-game-hero.jpg"],
   },
   robots: {
     index: true,
@@ -111,8 +126,16 @@ export default function RootLayout({
             "@context": "https://schema.org",
             "@type": "WebSite",
             name: siteConfig.fullName,
-            alternateName: ["Daman Game", "damangame"],
+            alternateName: ["Daman Game", "damangame", "Daman Login", "Daman App"],
             url: siteConfig.url,
+            potentialAction: {
+              "@type": "SearchAction",
+              target: {
+                "@type": "EntryPoint",
+                urlTemplate: `${siteConfig.url}/faq?q={search_term_string}`,
+              },
+              "query-input": "required name=search_term_string",
+            },
           }}
         />
       </body>

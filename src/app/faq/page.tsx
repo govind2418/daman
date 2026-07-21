@@ -13,6 +13,7 @@ export const metadata: Metadata = pageMetadata({
   description:
     "Answers to common questions about Daman Game (damangame) — Daman Login, accounts, matchmaking, tournaments, and rewards.",
   path: "/faq",
+  keywords: ["Daman Game FAQ", "Daman Game Help", "Daman Game Questions"],
 });
 
 export default function FaqPage() {

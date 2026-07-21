@@ -16,6 +16,7 @@ export const metadata: Metadata = pageMetadata({
   description:
     "Browse Daman Game's skill-based game categories — Arcade, Strategy, Racing, and Puzzle — and jump into ranked matches today.",
   path: "/games",
+  keywords: ["Daman Game Games List", "Daman Game Arcade", "Daman Game Strategy", "Daman Game Racing", "Daman Game Puzzle"],
 });
 
 export default function GamesPage() {

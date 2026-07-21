@@ -41,6 +41,7 @@ export default async function BlogPostPage({
 
   const url = `${siteConfig.url}/blog/${slug}`;
   const publishedDate = new Date(post.date).toISOString();
+  const modifiedDate = new Date().toISOString();
 
   return (
     <article className="pb-20 pt-32 sm:pt-40">
@@ -99,7 +100,7 @@ export default async function BlogPostPage({
           headline: post.title,
           description: post.excerpt,
           datePublished: publishedDate,
-          dateModified: publishedDate,
+          dateModified: modifiedDate,
           url,
           mainEntityOfPage: url,
           articleSection: post.category,
