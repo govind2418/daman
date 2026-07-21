@@ -1,12 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import Link from "next/link";
+import { ChevronDown, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export type AccordionItem = {
   question: string;
   answer: string;
+  link?: { label: string; href: string };
 };
 
 export function Accordion({ items }: { items: AccordionItem[] }) {
@@ -52,9 +54,19 @@ export function Accordion({ items }: { items: AccordionItem[] }) {
               )}
             >
               <div className="overflow-hidden">
-                <p className="px-5 pb-4 text-sm leading-relaxed text-muted">
+                <p className="px-5 text-sm leading-relaxed text-muted">
                   {item.answer}
                 </p>
+                {item.link && (
+                  <Link
+                    href={item.link.href}
+                    className="mt-2 inline-flex items-center gap-1.5 px-5 pb-4 text-sm font-semibold text-brand-gold hover:underline"
+                  >
+                    {item.link.label}
+                    <ArrowRight size={14} aria-hidden />
+                  </Link>
+                )}
+                {!item.link && <div className="pb-4" />}
               </div>
             </div>
           </div>
