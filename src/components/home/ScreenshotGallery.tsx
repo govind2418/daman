@@ -2,14 +2,16 @@ import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
-const screenshotCount = 21;
-const screenshots = Array.from({ length: screenshotCount }, (_, index) => {
-  const number = String(index + 1).padStart(2, "0");
-  return {
-    src: `/screenshots/daman-game-screenshot-${number}.png`,
-    alt: `Daman Game platform screenshot ${index + 1}`,
-  };
-});
+const excludedNumbers = new Set([1, 2, 3, 6]);
+const screenshots = Array.from({ length: 21 }, (_, index) => index + 1)
+  .filter((n) => !excludedNumbers.has(n))
+  .map((n) => {
+    const number = String(n).padStart(2, "0");
+    return {
+      src: `/screenshots/daman-game-screenshot-${number}.png`,
+      alt: `Daman Game platform screenshot ${n}`,
+    };
+  });
 
 export function ScreenshotGallery() {
   return (
