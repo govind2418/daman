@@ -16,6 +16,7 @@ import { IconCard } from "@/components/ui/IconCard";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Button } from "@/components/ui/Button";
 import { Hero } from "@/components/home/Hero";
+import { ScreenshotGallery } from "@/components/home/ScreenshotGallery";
 import { RelatedLinks } from "@/components/shared/RelatedLinks";
 import { gameCategories } from "@/lib/games";
 import { pageMetadata } from "@/lib/seo";
@@ -116,6 +117,8 @@ export default function Home() {
           </p>
         </Container>
       </section>
+
+      <ScreenshotGallery />
 
       <section className="border-y border-white/5 bg-surface/50 py-16 sm:py-20">
         <Container>
