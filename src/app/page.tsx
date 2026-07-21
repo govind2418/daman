@@ -33,6 +33,20 @@ export const metadata: Metadata = pageMetadata({
   ogTitle: homeTitle,
 });
 
+const quickInfo = [
+  { feature: "Official Platform", details: "Daman Game Official Website & APK" },
+  { feature: "Available App", details: "Android APK (latest version)" },
+  { feature: "Popular Games", details: "Win Go, Colour Prediction, Aviator, Slots, Casino & Fishing" },
+  { feature: "Registration", details: "Mobile Number Registration" },
+  { feature: "Welcome Rewards", details: "Gift Code, Invite Code & Promotional Bonuses (when available)" },
+  { feature: "Wallet Features", details: "Deposit, Withdrawal & Transaction History" },
+  { feature: "Payment Methods", details: "UPI, Bank Transfer, Paytm, USDT and other supported options" },
+  { feature: "Account Access", details: "Secure Daman Game Login" },
+  { feature: "Referral Program", details: "Invite Friends & Earn Rewards" },
+  { feature: "Customer Support", details: "24×7 Help & Self-Service Center" },
+  { feature: "Platform Access", details: "Mobile Browser & Android APK" },
+];
+
 const gettingStarted = [
   {
     icon: LogIn,
@@ -85,6 +99,101 @@ export default function Home() {
   return (
     <>
       <Hero />
+
+      <section className="border-y border-white/5 bg-surface/50 py-16 sm:py-20">
+        <Container className="max-w-3xl">
+          <h2 className="font-display text-2xl font-bold text-white sm:text-3xl">
+            Getting Started with Daman Game
+          </h2>
+          <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
+            Getting started with Daman Game is simple and takes only a few
+            minutes. New users can create an account using a valid mobile
+            number through the official registration page. During
+            registration, players may also have the option to enter a Daman
+            Game Gift Code or Invite Code, allowing them to unlock welcome
+            rewards or promotional bonuses when available.
+          </p>
+          <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
+            After registration, users can either continue playing through the
+            mobile browser or install the Daman Game APK for a faster and
+            more convenient experience. The application provides quick access
+            to the complete gaming platform, including account management,
+            wallet features, promotions, and game categories.
+          </p>
+          <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
+            Once the app is installed, simply complete your{" "}
+            <Link href="/login" className="font-semibold text-brand-gold hover:underline">
+              Daman Game Login
+            </Link>{" "}
+            to access your profile, explore available games, manage deposits
+            and withdrawals, redeem rewards, and participate in ongoing
+            events from a single dashboard.
+          </p>
+
+          <h3 className="mt-10 font-display text-xl font-bold text-white">
+            Daman Game Quick Information
+          </h3>
+          <div className="mt-4 overflow-x-auto rounded-xl border border-white/10">
+            <table className="w-full border-collapse text-left text-sm">
+              <thead>
+                <tr className="bg-white/5">
+                  <th className="border-b border-white/10 px-4 py-3 font-semibold text-white">
+                    Feature
+                  </th>
+                  <th className="border-b border-white/10 px-4 py-3 font-semibold text-white">
+                    Details
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {quickInfo.map(({ feature, details }) => (
+                  <tr key={feature} className="odd:bg-white/[0.02]">
+                    <td className="border-b border-white/5 px-4 py-3 font-medium text-white/90">
+                      {feature}
+                    </td>
+                    <td className="border-b border-white/5 px-4 py-3 text-muted">
+                      {details}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </Container>
+      </section>
+
+      <section className="py-16 sm:py-20">
+        <Container className="max-w-3xl">
+          <h2 className="font-display text-2xl font-bold text-white sm:text-3xl">
+            Discover the Daman Game Platform
+          </h2>
+          <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
+            Explore everything that Daman Game has to offer, from exciting
+            game categories to exclusive rewards designed for both new and
+            returning players. The platform regularly introduces promotional
+            events, welcome bonuses, gift codes, referral incentives, and
+            seasonal campaigns that give players more ways to earn while
+            enjoying their favourite games.
+          </p>
+          <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
+            One of the most popular features is the Daman Game Referral
+            Program, where users can invite friends and unlock additional
+            rewards based on referral activity. Alongside the referral
+            system, players can also participate in daily check-in bonuses,
+            limited-time promotions, activity rewards, VIP benefits, and
+            other ongoing campaigns available through the platform.
+          </p>
+          <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
+            Whether you&apos;re creating a new account or returning to play,
+            this guide covers everything you need to know about Daman Game
+            Login, Daman Game Register, Daman Game APK Download, Gift Codes,
+            Bonuses, Wallet Features, and the complete gaming experience.
+            You&apos;ll also learn how to navigate the platform, access
+            popular game categories, manage your account, and make the most
+            of the features available inside Daman Game.
+          </p>
+        </Container>
+      </section>
 
       <section className="py-16 sm:py-20">
         <Container className="max-w-3xl text-center">
