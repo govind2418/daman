@@ -14,6 +14,7 @@ import { pageMetadata, breadcrumbJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: "Daman Login",
+  absoluteTitle: "Daman Game Login | Daman Login to damangame.co.in",
   description:
     "Daman Login — sign in to your Daman Game account to compete, climb the leaderboard, and unlock rewards on damangame.co.in.",
   path: "/login",
@@ -24,7 +25,7 @@ export default function LoginPage() {
   return (
     <>
       <AuthLayout
-        title="Daman Login"
+        title="Daman Game Login"
         description="Daman Login to pick up your rank, tournaments, and rewards right where you left off on Daman Game."
         breadcrumbs={<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Login" }]} />}
       >

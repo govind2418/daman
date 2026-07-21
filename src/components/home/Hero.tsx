@@ -26,11 +26,11 @@ export function Hero() {
 
         <Container className="max-w-3xl text-center">
           <span className="inline-flex animate-fade-up items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-brand-gold">
-            damangame.co.in
+            welcome to daman game
           </span>
 
           <h1 className="mt-6 animate-fade-up font-display text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl [animation-delay:0.1s]">
-            Daman Game
+            Welcome to Daman Game
           </h1>
 
           <p className="mx-auto mt-6 max-w-xl animate-fade-up text-base leading-relaxed text-muted [animation-delay:0.2s] sm:text-lg">

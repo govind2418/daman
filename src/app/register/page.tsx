@@ -14,10 +14,11 @@ import { pageMetadata, breadcrumbJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: "Register",
+  absoluteTitle: "Daman Game Register | Sign Up & Enter Gift Code",
   description:
-    "Create your free Daman Game account in under a minute — already registered? Head to Daman Login instead.",
+    "Daman Game Register — create your free account in under a minute and enter a Gift Code or Invite Code for welcome rewards. Already registered? Head to Daman Login instead.",
   path: "/register",
-  keywords: ["Daman Game Sign Up", "Daman Game Create Account", "Daman Game Invite Code"],
+  keywords: ["Daman Game Sign Up", "Daman Game Create Account", "Daman Game Invite Code", "Daman Game Gift Code"],
 });
 
 const requirements = [
@@ -44,7 +45,7 @@ export default function RegisterPage() {
   return (
     <>
       <AuthLayout
-        title="Join Daman Game"
+        title="Daman Game Register"
         description="Create your free Daman Game account in under a minute and jump into your first ranked match today."
         breadcrumbs={<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Register" }]} />}
       >

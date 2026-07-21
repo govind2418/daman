@@ -18,6 +18,7 @@ export function pageMetadata({
   path,
   ogTitle,
   keywords,
+  absoluteTitle,
 }: {
   title: string;
   description: string;
@@ -26,9 +27,11 @@ export function pageMetadata({
   ogTitle?: string;
   /** Page-specific keywords, appended after the site-wide core keyword set. */
   keywords?: string[];
+  /** Exact <title> tag text, bypassing the root " | Daman Game" template — use for keyword-targeted titles that already read complete on their own. */
+  absoluteTitle?: string;
 }): Metadata {
   const url = `${siteConfig.url}${path}`;
-  const resolvedOgTitle = ogTitle ?? `${title} | ${siteConfig.fullName}`;
+  const resolvedOgTitle = ogTitle ?? absoluteTitle ?? `${title} | ${siteConfig.fullName}`;
   const ogImage = {
     url: "/images/daman-game-hero.jpg",
     width: 1536,
@@ -40,7 +43,7 @@ export function pageMetadata({
     : coreKeywords;
 
   return {
-    title,
+    title: absoluteTitle ? { absolute: absoluteTitle } : title,
     description,
     keywords: resolvedKeywords,
     alternates: { canonical: url },

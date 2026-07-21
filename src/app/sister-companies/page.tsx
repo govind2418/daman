@@ -24,9 +24,15 @@ const sisterCompanies = [
   },
   {
     name: "Sikkim Game",
-    url: "https://sikkimgame.co.in",
+    url: "https://sikkimgame.in.net",
     description:
       "Sikkim Game is a sister platform in the Daman Game family, offering its own lineup of skill-based games, tournaments, and rewards for competitive players.",
+  },
+  {
+    name: "BDG Win",
+    url: "https://bdgwin.ai",
+    description:
+      "BDG Win is a sister platform in the Daman Game family, offering its own lineup of skill-based games, tournaments, and rewards for competitive players.",
   },
   {
     name: "Lottery 7",

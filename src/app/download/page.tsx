@@ -15,6 +15,7 @@ import { pageMetadata, breadcrumbJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: "Download",
+  absoluteTitle: "Daman Game APK Download | Daman App for Android",
   description:
     "How to access Daman Game — no download or installation required. Play directly from a web browser at damangame.co.in.",
   path: "/download",
@@ -47,7 +48,7 @@ export default function DownloadPage() {
     <>
       <PageHero
         eyebrow="Access"
-        title="Accessing Daman Game"
+        title="Daman Game APK Download"
         description="Daman Game is a web-based platform — there's no app to download or install."
         breadcrumbs={<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Download" }]} />}
       >
