@@ -220,9 +220,9 @@ export default function Home() {
         items={[
           { label: "Getting Started", href: "#getting-started" },
           { label: "Discover the Platform", href: "#discover-platform" },
-          { label: "How to Register", href: "#how-to-register" },
-          { label: "How to Login", href: "#how-to-login" },
-          { label: "How to Access", href: "#how-to-access" },
+          { label: "Daman Game Register", href: "#how-to-register" },
+          { label: "Daman Game Login", href: "#how-to-login" },
+          { label: "Daman Game APK Download", href: "#how-to-access" },
           { label: "How to Play", href: "#how-to-play" },
           { label: "What is Daman Game?", href: "#what-is-daman-game" },
           { label: "Screenshots", href: "#screenshots" },
@@ -334,7 +334,7 @@ export default function Home() {
       <section id="how-to-register" className="py-16 sm:py-20">
         <Container className="max-w-3xl">
           <h2 className="font-display text-2xl font-bold text-white sm:text-3xl">
-            How to Register on Daman Game
+            Daman Game Register
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
             Creating your Daman Game account only takes a few minutes. Once
@@ -359,7 +359,7 @@ export default function Home() {
       <section id="how-to-login" className="border-y border-white/5 bg-surface/50 py-16 sm:py-20">
         <Container className="max-w-3xl">
           <h2 className="font-display text-2xl font-bold text-white sm:text-3xl">
-            How to Login to Daman Game
+            Daman Game Login
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
             Returning players can securely access their account in just a
@@ -372,7 +372,7 @@ export default function Home() {
       <section id="how-to-access" className="py-16 sm:py-20">
         <Container className="max-w-3xl">
           <h2 className="font-display text-2xl font-bold text-white sm:text-3xl">
-            How to Access Daman Game
+            Daman Game APK Download
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
             Daman Game is accessed entirely through the web — there&apos;s no

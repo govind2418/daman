@@ -30,7 +30,7 @@ export function Hero() {
           </span>
 
           <h1 className="mt-6 animate-fade-up font-display text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl [animation-delay:0.1s]">
-            Welcome to Daman Game
+            Daman Game Login, Register & APK Download
           </h1>
 
           <p className="mx-auto mt-6 max-w-xl animate-fade-up text-base leading-relaxed text-muted [animation-delay:0.2s] sm:text-lg">
