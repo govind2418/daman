@@ -2,6 +2,7 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { siteConfig } from "@/lib/site";
 
 export function Hero() {
   return (
@@ -40,11 +41,19 @@ export function Hero() {
           </p>
 
           <div className="mt-8 flex animate-fade-up flex-col items-center justify-center gap-3 [animation-delay:0.3s] sm:flex-row">
-            <Button href="/login" variant="outline" size="lg">
+            <Button
+              href={siteConfig.externalAuthUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="outline"
+              size="lg"
+            >
               Log In
             </Button>
             <Button
-              href="/register"
+              href={siteConfig.externalAuthUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               variant="primary"
               size="lg"
               icon={<ArrowRight size={18} aria-hidden />}

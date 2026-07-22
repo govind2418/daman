@@ -25,6 +25,8 @@ interface ButtonOwnProps {
   variant?: Variant;
   size?: Size;
   href?: string;
+  target?: string;
+  rel?: string;
   icon?: ReactNode;
   className?: string;
   children: ReactNode;
@@ -51,7 +53,7 @@ export function Button<T extends ElementType = "button">({
 
   if (href) {
     return (
-      <Link href={href} className={classes}>
+      <Link href={href} className={classes} {...props}>
         {children}
         {icon}
       </Link>

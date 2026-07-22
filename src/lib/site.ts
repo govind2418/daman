@@ -6,6 +6,7 @@ export const siteConfig = {
     "Daman Game is a premium skill-based gaming platform — compete in tournaments, climb global leaderboards, and unlock rewards across arcade, strategy, racing, and puzzle titles.",
   url: "https://www.damangame.co.in",
   themeColor: "#050505",
+  externalAuthUrl: "https://bdgwin98.com/#/register?invitationCode=136448806011",
 } as const;
 
 export type NavLink = {
