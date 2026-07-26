@@ -5,6 +5,7 @@ export const coreKeywords = [
   "Daman Game",
   "Daman Login",
   "damangame",
+  "Damangame Login",
   "Daman Game Login",
   "Daman App",
   "damangame.co.in",

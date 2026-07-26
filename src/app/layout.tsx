@@ -33,6 +33,7 @@ export const metadata: Metadata = {
     "Daman Game",
     "Daman Login",
     "damangame",
+    "Damangame Login",
     "Daman Game Login",
     "Daman App",
     "damangame.co.in",
@@ -129,7 +130,7 @@ export default function RootLayout({
             "@context": "https://schema.org",
             "@type": "WebSite",
             name: siteConfig.fullName,
-            alternateName: ["Daman Game", "damangame", "Daman Login", "Daman App"],
+            alternateName: ["Daman Game", "damangame", "Daman Login", "Damangame Login", "Daman App"],
             url: siteConfig.url,
             potentialAction: {
               "@type": "SearchAction",
