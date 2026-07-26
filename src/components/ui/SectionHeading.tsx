@@ -27,9 +27,18 @@ export function SectionHeading({
           {eyebrow}
         </span>
       )}
-      <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
-        {title}
-      </h2>
+      <div className="relative">
+        <div
+          aria-hidden
+          className={cn(
+            "pointer-events-none absolute -top-6 -z-10 h-32 w-56 rounded-full bg-gradient-to-r from-brand-red/25 via-brand-orange/20 to-brand-gold/15 blur-[50px] sm:h-40 sm:w-72",
+            align === "center" ? "left-1/2 -translate-x-1/2" : "left-0",
+          )}
+        />
+        <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
+          {title}
+        </h2>
+      </div>
       {description && (
         <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
           {description}
