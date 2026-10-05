@@ -3,14 +3,12 @@ import { siteConfig } from "@/lib/site";
 
 export const coreKeywords = [
   "Daman Game",
-  "Daman Login",
+  "Daman Game Login",
   "damangame",
   "Damangame Login",
-  "Daman Game Login",
-  "Daman App",
+  "Daman Game App",
   "damangame.co.in",
-  "Daman Game Register",
-  "Daman Game Download",
+  "Daman Game Guide",
 ];
 
 export function pageMetadata({

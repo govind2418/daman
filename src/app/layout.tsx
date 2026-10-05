@@ -24,10 +24,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
-  title: {
-    default: `${siteConfig.fullName} — ${siteConfig.tagline}`,
-    template: `%s | ${siteConfig.fullName}`,
-  },
+  title: { default: "Daman Game | Login, App & Game Guide", template: "%s | Daman Game" },
   description: siteConfig.description,
   keywords: [
     "Daman Game",
@@ -37,23 +34,16 @@ export const metadata: Metadata = {
     "Daman Game Login",
     "Daman App",
     "damangame.co.in",
-    "Daman Game Register",
-    "Daman Game Download",
-    "Daman Points",
-    "Daman Game Tournaments",
-    "Daman Game Leaderboard",
-    "Daman Game Rewards",
-    "skill gaming",
-    "esports tournaments",
-    "gaming leaderboard",
-    "competitive gaming platform",
-    "arcade games online",
+    "Daman Game App",
+    "Daman Game Guide",
+    "Damangame Login",
+    "Daman Game Information",
   ],
   authors: [{ name: siteConfig.fullName }],
   openGraph: {
     type: "website",
     url: siteConfig.url,
-    title: `${siteConfig.fullName} — ${siteConfig.tagline}`,
+    title: "Daman Game | Login, App & Game Guide",
     description: siteConfig.description,
     siteName: siteConfig.fullName,
     images: [
@@ -67,7 +57,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.fullName} — ${siteConfig.tagline}`,
+    title: "Daman Game | Login, App & Game Guide",
     description: siteConfig.description,
     images: ["/images/daman-game-hero.jpg"],
   },
@@ -100,7 +90,7 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
       className={`${sora.variable} ${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground pb-16 lg:pb-0">
+      <body className="min-h-full flex flex-col bg-background text-foreground pb-20">
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-full focus:bg-brand-red focus:px-5 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
@@ -114,17 +104,6 @@ export default function RootLayout({
         <Footer />
         <BackToTop />
         <MobileStickyCta />
-        <JsonLd
-          data={{
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            name: siteConfig.fullName,
-            alternateName: ["Daman Game", "damangame", "Daman"],
-            url: siteConfig.url,
-            logo: `${siteConfig.url}/icon.svg`,
-            description: siteConfig.description,
-          }}
-        />
         <JsonLd
           data={{
             "@context": "https://schema.org",

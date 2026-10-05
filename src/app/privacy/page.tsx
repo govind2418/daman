@@ -6,74 +6,32 @@ import { JsonLd } from "@/components/shared/JsonLd";
 import { pageMetadata, breadcrumbJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Privacy Policy",
-  description: "Privacy Policy for Daman Game.",
+  title: "Privacy Information",
+  absoluteTitle: "Privacy Information | Daman Game Guide",
+  description: "Privacy information for this independent Daman Game guide. This site does not provide account login or request game credentials.",
   path: "/privacy",
 });
 
 export default function PrivacyPage() {
-  return (
-    <>
-      <LegalLayout
-        eyebrow="Legal"
-        title="Privacy Policy"
-        lastUpdated="July 22, 2026"
-        breadcrumbs={
-          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Privacy Policy" }]} />
-        }
-        sections={[
-          {
-            heading: "1. Information we collect",
-            body: [
-              "We collect account information (email, display name), gameplay data (match history, rankings), and basic device/usage data to operate and improve the platform.",
-            ],
-          },
-          {
-            heading: "2. How we use your information",
-            body: [
-              "Your information is used to provide matchmaking, maintain leaderboards, deliver rewards, provide customer support, and improve platform fairness and performance.",
-            ],
-          },
-          {
-            heading: "3. Data sharing",
-            body: [
-              "We do not sell your personal data. We may share limited data with service providers who help us operate the platform, under strict confidentiality agreements.",
-            ],
-          },
-          {
-            heading: "4. Data security",
-            body: [
-              "We use industry-standard security practices to protect your data, including encryption in transit and access controls on internal systems.",
-            ],
-          },
-          {
-            heading: "5. Your rights",
-            body: [
-              "You can request access to, correction of, or deletion of your personal data at any time by contacting our support team.",
-            ],
-          },
-          {
-            heading: "6. Contact",
-            body: [
-              "For privacy-related questions, reach out via our Contact page.",
-            ],
-          },
-        ]}
-      />
-      <RelatedLinks
-        links={[
-          { label: "Terms of Service", href: "/terms", description: "Platform rules and account eligibility." },
-          { label: "Responsible Play", href: "/responsible-play", description: "Our approach to player wellbeing." },
-          { label: "Support", href: "/support", description: "Browse help center topics." },
-          { label: "Contact", href: "/contact", description: "Reach the team directly." },
-        ]}
-      />
-      <JsonLd
-        data={breadcrumbJsonLd([
-          { name: "Home", path: "/" },
-          { name: "Privacy Policy", path: "/privacy" },
-        ])}
-      />
-    </>
-  );
+  return <>
+    <LegalLayout
+      eyebrow="Website information"
+      title="Privacy Information"
+      lastUpdated="October 5, 2026"
+      breadcrumbs={<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Privacy Information" }]} />}
+      sections={[
+        { heading: "1. This site is an information guide", body: ["This website does not provide Daman Game accounts, sign-in, registration, payment, or password recovery. Do not enter game credentials, verification codes, financial details, or identity documents on this site."] },
+        { heading: "2. Information submitted through this site", body: ["The guide pages do not ask visitors for game-account details. Standard hosting and delivery services may process technical request information to serve and protect the website; consult the hosting provider's privacy materials for its handling of server logs."] },
+        { heading: "3. External services", body: ["If you follow a link to another website, that service has its own privacy practices and terms. Check the destination and its privacy notice before submitting any information. This guide does not control third-party data handling."] },
+        { heading: "4. Account data questions", body: ["Questions about an account or information held by a game operator must be directed to that operator through a contact channel you have independently verified. This guide cannot access, correct, or delete third-party account data."] },
+        { heading: "5. Changes", body: ["This page may be updated when the website changes. It describes this information website only and is not the privacy notice of a game operator or any other third party."] },
+      ]}
+    />
+    <RelatedLinks links={[
+      { label: "Website Terms", href: "/terms", description: "Read the terms for using this information guide." },
+      { label: "Daman Game Login", href: "/daman-game-login", description: "Review account-security guidance." },
+      { label: "Responsible Play", href: "/responsible-play", description: "Read general safety information." },
+    ]} />
+    <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Privacy Information", path: "/privacy" }])} />
+  </>;
 }

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { AtSign, Camera, PlayCircle, MessageCircle } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/ui/Logo";
 import { footerLinks, siteConfig } from "@/lib/site";
@@ -11,16 +10,9 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
   { title: "Legal", links: [...footerLinks.legal] },
 ];
 
-const socials = [
-  { label: "Twitter", href: "https://twitter.com", icon: AtSign },
-  { label: "Instagram", href: "https://instagram.com", icon: Camera },
-  { label: "YouTube", href: "https://youtube.com", icon: PlayCircle },
-  { label: "Discord", href: "https://discord.com", icon: MessageCircle },
-];
-
 export function Footer() {
   return (
-    <footer className="relative border-t border-white/5 bg-surface/60 pb-28 pt-16 sm:pb-16">
+    <footer className="relative border-t border-white/5 bg-surface/60 pb-28 pt-16">
       <Container>
         <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:grid-cols-6">
           <div className="col-span-2 sm:col-span-3 lg:col-span-2">
@@ -28,20 +20,6 @@ export function Footer() {
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">
               {siteConfig.description}
             </p>
-            <div className="mt-6 flex gap-3">
-              {socials.map(({ label, href, icon: Icon }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  className="glass flex h-10 w-10 items-center justify-center rounded-full text-white/80 transition-colors hover:text-brand-gold"
-                >
-                  <Icon size={18} aria-hidden />
-                </a>
-              ))}
-            </div>
           </div>
 
           {columns.map((col) => (
@@ -71,9 +49,7 @@ export function Footer() {
             reserved.
           </p>
           <p className="max-w-xl leading-relaxed">
-            Daman Game is a skill-based entertainment platform. No
-            real-money wagering. Must be 18+ to create an account. Play
-            responsibly.
+            Independent information guide only. This website does not operate games, process accounts, or provide an app download. Check local rules, provider terms, age eligibility, and play responsibly.
           </p>
         </div>
       </Container>

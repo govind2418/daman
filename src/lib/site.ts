@@ -1,12 +1,11 @@
 export const siteConfig = {
   name: "Daman Game",
   fullName: "Daman Game",
-  tagline: "Skill-Based Gaming Arena",
+  tagline: "Daman Game Information & Guides",
   description:
-    "Daman Game is a premium skill-based gaming platform — compete in tournaments, climb global leaderboards, and unlock rewards across arcade, strategy, racing, and puzzle titles.",
+    "Independent information about Daman Game, login safety, app availability, and game labels shown in existing project artwork. This website does not operate games or user accounts.",
   url: "https://damangame.co.in",
   themeColor: "#050505",
-  externalAuthUrl: "https://bdgwin98.com/#/register?invitationCode=136448806011",
 } as const;
 
 export type NavLink = {
@@ -15,34 +14,25 @@ export type NavLink = {
 };
 
 export const navLinks: NavLink[] = [
-  { label: "Games", href: "/games" },
-  { label: "Tournaments", href: "/tournaments" },
-  { label: "Leaderboard", href: "/leaderboard" },
-  { label: "Rewards", href: "/rewards" },
-  { label: "About", href: "/about" },
+  { label: "Daman Game", href: "/daman-game" },
+  { label: "Login Guide", href: "/daman-game-login" },
+  { label: "App Guide", href: "/daman-game-app" },
+  { label: "Responsible Play", href: "/responsible-play" },
 ];
 
 export const footerLinks = {
   platform: [
-    { label: "Games", href: "/games" },
-    { label: "Tournaments", href: "/tournaments" },
-    { label: "Leaderboard", href: "/leaderboard" },
-    { label: "Rewards", href: "/rewards" },
-    { label: "Daman Login", href: "/login" },
-    { label: "Download", href: "/download" },
+    { label: "Daman Game", href: "/daman-game" },
+    { label: "Daman Game Login", href: "/daman-game-login" },
+    { label: "Daman Game App", href: "/daman-game-app" },
+    { label: "FAQ", href: "/faq" },
   ],
   company: [
-    { label: "About", href: "/about" },
-    { label: "Careers", href: "/careers" },
-    { label: "Press", href: "/press" },
-    { label: "Blog", href: "/blog" },
-    { label: "Sister Companies", href: "/sister-companies" },
+    { label: "Responsible Play", href: "/responsible-play" },
   ],
   support: [
-    { label: "Help Center", href: "/support" },
     { label: "FAQ", href: "/faq" },
-    { label: "Contact", href: "/contact" },
-    { label: "Responsible Play", href: "/responsible-play" },
+    { label: "About this guide", href: "/daman-game" },
   ],
   legal: [
     { label: "Terms of Service", href: "/terms" },

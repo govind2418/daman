@@ -11,7 +11,7 @@ import { pageMetadata, breadcrumbJsonLd } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "FAQ",
   description:
-    "Answers to common questions about Daman Game (damangame) — Daman Login, accounts, matchmaking, tournaments, and rewards.",
+    "Answers about this Daman Game information website, its images, login guidance, app availability, and responsible use.",
   path: "/faq",
   keywords: ["Daman Game FAQ", "Daman Game Help", "Daman Game Questions"],
 });
@@ -20,9 +20,9 @@ export default function FaqPage() {
   return (
     <>
       <PageHero
-        eyebrow="Support"
+        eyebrow="Daman Game help"
         title="Frequently asked questions"
-        description="Can't find what you're looking for? Reach out to our support team anytime."
+        description="Straightforward answers about this guide. It is not connected to the game operator and cannot provide account support."
         breadcrumbs={<Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "FAQ" }]} />}
       />
 
@@ -34,12 +34,10 @@ export default function FaqPage() {
 
       <RelatedLinks
         links={[
-          { label: "Support", href: "/support", description: "Browse help center topics." },
-          { label: "Contact", href: "/contact", description: "Reach the team directly." },
-          { label: "Login", href: "/login", description: "Sign in to an existing account." },
-          { label: "Register", href: "/register", description: "Create a free account." },
-          { label: "Download", href: "/download", description: "How to access Daman Game." },
-          { label: "Responsible Play", href: "/responsible-play", description: "Our approach to player wellbeing." },
+          { label: "Daman Game", href: "/daman-game", description: "Read the general Daman Game overview." },
+          { label: "Login Guide", href: "/daman-game-login", description: "Review safe account-access guidance." },
+          { label: "App Guide", href: "/daman-game-app", description: "Check app availability and download safety." },
+          { label: "Responsible Play", href: "/responsible-play", description: "Read general safety and wellbeing guidance." },
         ]}
       />
 

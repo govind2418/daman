@@ -7,7 +7,7 @@ import { Menu, X } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { navLinks, siteConfig } from "@/lib/site";
+import { navLinks } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
@@ -60,23 +60,11 @@ export function Navbar() {
             </ul>
 
             <div className="hidden items-center gap-3 lg:flex">
-              <Button
-                href={siteConfig.externalAuthUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="outline"
-                size="sm"
-              >
-                Log in
+              <Button href="/daman-game-login" variant="outline" size="sm">
+                Login guide
               </Button>
-              <Button
-                href={siteConfig.externalAuthUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="primary"
-                size="sm"
-              >
-                Register
+              <Button href="/daman-game-app" variant="primary" size="sm">
+                App guide
               </Button>
             </div>
 
@@ -110,25 +98,11 @@ export function Navbar() {
               </Link>
             ))}
             <div className="mt-3 flex gap-3 border-t border-white/5 pt-4">
-              <Button
-                href={siteConfig.externalAuthUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="outline"
-                size="sm"
-                className="flex-1"
-              >
-                Log in
+              <Button href="/daman-game-login" variant="outline" size="sm" className="flex-1">
+                Login guide
               </Button>
-              <Button
-                href={siteConfig.externalAuthUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="primary"
-                size="sm"
-                className="flex-1"
-              >
-                Register
+              <Button href="/daman-game-app" variant="primary" size="sm" className="flex-1">
+                App guide
               </Button>
             </div>
           </Container>

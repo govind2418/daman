@@ -1,49 +1,22 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site";
-import { gameCategories } from "@/lib/games";
-import { blogPosts } from "@/lib/blog";
+
+const routes = [
+  { path: "", priority: 1 },
+  { path: "/daman-game", priority: 0.9 },
+  { path: "/daman-game-login", priority: 0.8 },
+  { path: "/daman-game-app", priority: 0.8 },
+  { path: "/faq", priority: 0.6 },
+  { path: "/responsible-play", priority: 0.6 },
+  { path: "/terms", priority: 0.4 },
+  { path: "/privacy", priority: 0.4 },
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = [
-    "",
-    "/games",
-    "/tournaments",
-    "/leaderboard",
-    "/rewards",
-    "/about",
-    "/careers",
-    "/press",
-    "/blog",
-    "/sister-companies",
-    "/faq",
-    "/contact",
-    "/support",
-    "/login",
-    "/register",
-    "/download",
-    "/terms",
-    "/privacy",
-    "/responsible-play",
-  ].map((path) => ({
+  return routes.map(({ path, priority }) => ({
     url: `${siteConfig.url}${path}`,
     lastModified: new Date(),
-    changeFrequency: "weekly" as const,
-    priority: path === "" ? 1 : 0.7,
+    changeFrequency: "weekly",
+    priority,
   }));
-
-  const gameRoutes = gameCategories.map((category) => ({
-    url: `${siteConfig.url}/games/${category.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "weekly" as const,
-    priority: 0.6,
-  }));
-
-  const blogRoutes = blogPosts.map((post) => ({
-    url: `${siteConfig.url}/blog/${post.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: 0.5,
-  }));
-
-  return [...staticRoutes, ...gameRoutes, ...blogRoutes];
 }
